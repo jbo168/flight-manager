@@ -21,11 +21,33 @@ public class FlightServiceImpl implements FlightService {
             return new ArrayList<Flight>(flights);
     }
 
+    @Override
+    public Flight getFlightById(int id) {
+        return flights.get(id);
+    }
+
+    @Override
+    public Flight saveOrUpdateFlight(Flight flight) {
+        if(flight != null){
+
+            int lastId = flights.get(flights.size()-1).getId();
+
+            flight.setId(lastId+1);
+            flights.add(flight);
+        }
+        return flight;
+    }
+
+    @Override
+    public void removeFlight(int id) {
+        flights.remove(id);
+    }
+
     private void getFlights(){
         flights = new ArrayList<>();
 
         Flight flight1 = new Flight();
-        flight1.setId(1);
+        flight1.setId(0);
         flight1.setAirline("Ryanair");
         flight1.setFrom("Cork");
         flight1.setTo("Ibiza");
@@ -35,7 +57,7 @@ public class FlightServiceImpl implements FlightService {
         flights.add(flight1);
 
         Flight flight2 = new Flight();
-        flight2.setId(2);
+        flight2.setId(1);
         flight2.setAirline("Aerlingus");
         flight2.setFrom("Shannon");
         flight2.setTo("Luexmbourg");

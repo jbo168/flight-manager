@@ -24,6 +24,9 @@
                 <th>To</th>
                 <th>Cost</th>
                 <th>Amount of tickets</th>
+                <th>View</th>
+                <th>Update</th>
+                <th>Remove</th>
             </tr>
             <tr th:each="flight : ${flights}">
                 <td th:text="${flight.id}"></td>
@@ -32,8 +35,12 @@
                 <td th:text="${flight.to}"></td>
                 <td th:text="${flight.cost}"></td>
                 <td th:text="${flight.noOfTickets}"></td>
+                <td><a th:href="${'/flight/' + flight.id}">View Details</a></td>
+                <td><a th:href="${'flight/update/' + flight.id}">Update Details</a></td>
+                <td><a th:href="${'flight/remove/' + flight.id}">Remove</a></td>
             </tr>
         </table>
+        <a th:href="${'flight/add'}"> New Flight</a>
     </div>
 </div>
 
