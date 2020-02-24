@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
+          rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <link href="../static/css/index.css"
+          th:href="@{css/index.css}" rel="stylesheet"/>
+    <title>Index page</title>
+</head>
+<body style="background-color:lightgrey;">
+<div id="content" class="container">
+    <div class="row">
+        <h3 class="ml-2">Welcome Back !</h3>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">Login using the form below</div>
+                <div id="loginFrmDiv" class="card-body">
+                    <br>
+                    <table>
+                        <div class="form-inline">
+                            <label class = "col-3 col-form-label" for="usernameLogin">Username: </label>
+                            <input type="text" id="usernameLogin" name ="usernameLogin" class="col-6 form-control" placeholder="Enter Your Username"/>
+                        </div>
+                        <br>
+                        <div class="form-inline mt-2">
+                            <label class="col-3 col-form-label" for="passwordLogin">Password:</label>
+                            <input type="password" id="passwordLogin" name ="passwordLogin" class="col-6 form-control" placeholder="Enter Your Password" />
+                        </div>
+                        <br>
+                        <div class="form-inline text-center d-block mt-2">
+                            <button id="loginSubmit" name="loginSubmit" type="submit" class="col-2 btn btn-primary mr-4">Login</button>
+                        </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

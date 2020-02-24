@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
+          rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <link href="../static/css/index.css"
+          th:href="@{css/index.css}" rel="stylesheet"/>
+    <title>Index page</title>
+</head>
+<body style="background-color:lightgrey;">
+<div class="container">
+    <div class="row">
+        <h3>Register using the form below</h3>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header"></div>
+                <div id="registerFrmDiv" class="card-body">
+                    <br>
+                    <table>
+                        <div class="form-inline">
+                            <label for="userNameReg" class="col-3 col-form-label">Username:</label>
+                            <input type="text" class="col-6 form-control" id="userNameReg" name="userNameReg" placeholder ="Choose a username" />
+                        </div>
+                        <br>
+                        <div class="form-inline">
+                            <label for="passWordReg" class="col-3 col-form-label">Password:</label>
+                            <input type="password" class="col-6 form-control" id="passWordReg" name ="passWordReg" placeholder="Choose a Password"/>
+                        </div>
+                        <br>
+                        <div class="form-inline">
+                            <label for="firstName" class="col-3 col-form-label">First Name:</label>
+                            <input type="text" class="col-6 form-control" id="firstName" name="firstName" placeholder="Enter you first name" />
+                        </div>
+                        <br>
+                        <div class="form-inline">
+                            <label for="surName" class="col-3 col-form-label">Surname:</label>
+                            <input type="text" class="col-6 form-control" id="surName" name="surName" placeholder="Enter you last name" />
+                        </div>
+                        <br>
+                        <div class="form-inline text-center d-block">
+                            <button type="submit" id="registerSubmit" name="registerSubmit"  class="col-2 btn btn-primary mr-4">Register</button>
+                            <!--                    <button type="reset" class="col-3 btn btn-secondary form-control" style="width:80px;"> Reset </button>-->
+                        </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
