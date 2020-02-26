@@ -1,38 +1,31 @@
 package com.flightmanager.app.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "flight", schema = "flightdb")
 public class Flight {
 
-    private int id;
-    private String from;
-    private String to;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int flightId;
     private String airline;
     private int cost;
-    private int noOfTickets;
+    private String routeFrom;
+    private String routeTo;
+    private int tickets;
 
-    public int getId() {
-        return id;
+    @Column(name = "flight_id")
+    public int getFlightId() {
+        return flightId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setFlightId(int flightId) {
+        this.flightId = flightId;
     }
 
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    public String getTo() {
-        return to;
-    }
-
-    public void setTo(String to) {
-        this.to = to;
-    }
-
+    @Basic
+    @Column(name = "airline")
     public String getAirline() {
         return airline;
     }
@@ -41,6 +34,8 @@ public class Flight {
         this.airline = airline;
     }
 
+    @Basic
+    @Column(name = "cost")
     public int getCost() {
         return cost;
     }
@@ -49,11 +44,33 @@ public class Flight {
         this.cost = cost;
     }
 
-    public int getNoOfTickets() {
-        return noOfTickets;
+    @Basic
+    @Column(name = "route_from")
+    public String getRouteFrom() {
+        return routeFrom;
     }
 
-    public void setNoOfTickets(int noOfTickets) {
-        this.noOfTickets = noOfTickets;
+    public void setRouteFrom(String routeFrom) {
+        this.routeFrom = routeFrom;
+    }
+
+    @Basic
+    @Column(name = "route_to")
+    public String getRouteTo() {
+        return routeTo;
+    }
+
+    public void setRouteTo(String routeTo) {
+        this.routeTo = routeTo;
+    }
+
+    @Basic
+    @Column(name = "tickets")
+    public int getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(int tickets) {
+        this.tickets = tickets;
     }
 }
