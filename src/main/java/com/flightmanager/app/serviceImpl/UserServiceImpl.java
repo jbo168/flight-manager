@@ -1,8 +1,7 @@
 package com.flightmanager.app.serviceImpl;
 
-import com.flightmanager.app.model.Flight;
 import com.flightmanager.app.model.User;
-import com.flightmanager.app.services.UserService;
+import com.flightmanager.app.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

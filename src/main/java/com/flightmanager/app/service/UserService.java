@@ -1,4 +1,4 @@
-package com.flightmanager.app.services;
+package com.flightmanager.app.service;
 
 import com.flightmanager.app.model.User;
 

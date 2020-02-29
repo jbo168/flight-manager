@@ -1,7 +1,6 @@
 package com.flightmanager.app.controller;
 
-import com.flightmanager.app.services.FlightService;
-import com.flightmanager.app.services.UserService;
+import com.flightmanager.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
