@@ -5,5 +5,5 @@ package com.flightmanager.app.builder;
  * @create: 29-Feb-2020
  **/
 
-public class SystemAdminBuilder extends UserBuilder {
+public class SystemManagerBuilder extends UserBuilder {
 }
