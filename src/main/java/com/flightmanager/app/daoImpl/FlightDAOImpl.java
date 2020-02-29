@@ -1,42 +1,45 @@
-package com.flightmanager.app.serviceImpl;
+package com.flightmanager.app.daoImpl;
 
 import com.flightmanager.app.dao.FlightDAO;
 import com.flightmanager.app.model.Flight;
-import com.flightmanager.app.services.FlightService;
+import com.flightmanager.app.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class FlightServiceImpl implements FlightService {
+@Component
+public class FlightDAOImpl implements FlightDAO {
 
     @Autowired
-    FlightDAO flightDAO;
+    FlightRepository flightRepository;
 
     @Override
     public void save(Flight flight) {
-        flightDAO.save(flight);
+        flightRepository.save(flight);
     }
 
     @Override
     public Flight update(Flight flight) {
-        return flightDAO.update(flight);
+        return flightRepository.save(flight);
     }
 
     @Override
     public Optional<Flight> findById(int id) {
-        return flightDAO.findById(id);
+        return flightRepository.findById(id);
     }
 
     @Override
     public List<Flight> findAll() {
-        return flightDAO.findAll();
+        List<Flight> flightList = (List<Flight>) flightRepository.findAll();
+        return flightList;
     }
 
     @Override
     public void deleteById(int id) {
-        flightDAO.deleteById(id);
+        flightRepository.deleteById(id);
     }
+
+
 }
