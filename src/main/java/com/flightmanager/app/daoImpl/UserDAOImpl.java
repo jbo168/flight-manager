@@ -1,44 +1,44 @@
-package com.flightmanager.app.serviceImpl;
+package com.flightmanager.app.daoImpl;
 
 import com.flightmanager.app.dao.UserDAO;
 import com.flightmanager.app.model.Customer;
 import com.flightmanager.app.repository.CustomerRepository;
-import com.flightmanager.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class UserServiceImpl implements UserService {
+@Component
+public class UserDAOImpl implements UserDAO {
 
     @Autowired
-    UserDAO userDAO;
+    CustomerRepository userRepository;
 
     @Override
-    public void save(Customer user) {
-        userDAO.save(user);
+    public Customer save(Customer user) {
+        userRepository.save(user);
+        return user;
     }
 
     @Override
     public Customer update(Customer user) {
-        return userDAO.save(user);
+        return userRepository.save(user);
     }
 
     @Override
     public Optional<Customer> findById(long id) {
-        return userDAO.findById(id);
+        return userRepository.findById(id);
     }
 
     @Override
     public List<Customer> findAll() {
-        List<Customer> flightList = (List<Customer>) userDAO.findAll();
+        List<Customer> flightList = (List<Customer>) userRepository.findAll();
         return flightList;
     }
 
     @Override
     public void deleteById(long id) {
-        userDAO.deleteById(id);
+        userRepository.deleteById(id);
     }
 }

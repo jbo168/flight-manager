@@ -1,17 +1,16 @@
-package com.flightmanager.app.service;
+package com.flightmanager.app.dao;
 
 import com.flightmanager.app.model.Customer;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
-public interface UserService {
+public interface UserDAO {
 
-    void save(Customer flight);
+    Customer save(Customer flight);
     Customer update(Customer flight);
     Optional<Customer> findById(long id);
     List<Customer> findAll();
     void deleteById(long id);
+
 }
