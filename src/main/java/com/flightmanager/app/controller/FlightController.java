@@ -1,5 +1,6 @@
 package com.flightmanager.app.controller;
 
+import com.flightmanager.app.factory.FlightFactory;
 import com.flightmanager.app.model.Flight;
 import com.flightmanager.app.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ public class FlightController {
     @Autowired
     private FlightService flightsService;
 
+    FlightFactory factory = new FlightFactory();
+
         @GetMapping(value = "/flights")
         public String listFlights(Model model) {
             model.addAttribute("flights", flightsService.findAll());
@@ -30,7 +33,7 @@ public class FlightController {
 
         @GetMapping(value = "/flight/add")
         public String newFlight(Model model){
-            model.addAttribute("flight", new Flight());
+            model.addAttribute("flight", factory.getFlight());
             return "addUpdateFlight";
         }
 
