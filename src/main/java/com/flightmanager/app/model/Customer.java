@@ -8,30 +8,28 @@ import javax.persistence.*;
  **/
 
 @Entity
-//@Table(name = "customer")
+@Table(name = "customer", schema = "flightdb")
 public class Customer {
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-//    @Column(name = "customer_id")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name = "customer_id")
     private int customer_ID;
 
-//    @Column(name = "first_name")
+    @Column(name = "first_name")
     private String first_name;
 
-//    @Column(name = "last_name")
+    @Column(name = "last_name")
     private String last_name;
 
-//    @Column(name = "password")
+    @Column(name = "password")
     private String password;
 
-//    @Column(name = "email")
+    @Column(name = "email")
     private String email;
 
-//    @Column(name = "contact")
+    @Column(name = "contact")
     private String contact;
-
-    public Customer() {
-    }
 
     public int getCustomer_ID() {
         return customer_ID;
