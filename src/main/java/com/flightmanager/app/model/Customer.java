@@ -12,22 +12,16 @@ import javax.persistence.*;
 public class Customer {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-//    @Column(name = "customer_id")
     private int customer_ID;
 
-//    @Column(name = "first_name")
     private String first_name;
 
-//    @Column(name = "last_name")
     private String last_name;
 
-//    @Column(name = "password")
     private String password;
 
-//    @Column(name = "email")
     private String email;
 
-//    @Column(name = "contact")
     private String contact;
 
     public Customer() {

@@ -5,7 +5,7 @@ public class ConcreteFactory {
         if(userType.equalsIgnoreCase("Admin"))
             return new AdminFactory();
         else if(userType.equalsIgnoreCase("System"))
-            return new SystemAdminFactory();
+            return new SystemManagerFactory();
         else{
             return new CustomerFactory();
         }

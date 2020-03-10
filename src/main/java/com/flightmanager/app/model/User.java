@@ -1,10 +1,6 @@
 package com.flightmanager.app.model;
 
 public class User {
-
-    public User(){
-
-    }
     private int id;
     private String username;
     private String password;
@@ -12,6 +8,10 @@ public class User {
     private String firstname;
     private String lastname;
     private String accType;
+
+    public User(){
+
+    }
 
     public int getId() {
         return id;
