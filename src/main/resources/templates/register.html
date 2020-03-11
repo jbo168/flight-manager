@@ -24,30 +24,36 @@
                 <div id="registerFrmDiv" class="card-body">
                     <br>
                     <table>
+                        <form th:action="@{/flights}" th:object="${customer}" method="POST">
                         <div class="form-inline">
-                            <label for="userNameReg" class="col-3 col-form-label">Username:</label>
-                            <input type="text" class="col-6 form-control" id="userNameReg" name="userNameReg" placeholder ="Choose a username" />
+                            <label class="col-3 col-form-label">Firstname:</label>
+                            <input type="text" class="col-6 form-control" th:field="*{first_name}"/>
                         </div>
                         <br>
                         <div class="form-inline">
-                            <label for="passWordReg" class="col-3 col-form-label">Password:</label>
-                            <input type="password" class="col-6 form-control" id="passWordReg" name ="passWordReg" placeholder="Choose a Password"/>
+                            <label class="col-3 col-form-label">Lastname:</label>
+                            <input type="text" class="col-6 form-control" th:field="*{last_name}"/>
                         </div>
                         <br>
                         <div class="form-inline">
-                            <label for="firstName" class="col-3 col-form-label">First Name:</label>
-                            <input type="text" class="col-6 form-control" id="firstName" name="firstName" placeholder="Enter you first name" />
+                            <label class="col-3 col-form-label">Email:</label>
+                            <input type="text" class="col-6 form-control" th:field="*{email}"/>
                         </div>
                         <br>
                         <div class="form-inline">
-                            <label for="surName" class="col-3 col-form-label">Surname:</label>
-                            <input type="text" class="col-6 form-control" id="surName" name="surName" placeholder="Enter you last name" />
+                            <label class="col-3 col-form-label">Password</label>
+                            <input type="text" class="col-6 form-control" th:field="*{password}"/>
+                        </div>
+                        <br>
+                        <div class="form-inline">
+                            <label class="col-3 col-form-label">Contact</label>
+                            <input type="text" class="col-6 form-control" th:field="*{contact}"/>
                         </div>
                         <br>
                         <div class="form-inline text-center d-block">
                             <button type="submit" id="registerSubmit" name="registerSubmit"  class="col-2 btn btn-primary mr-4">Register</button>
-                            <!--                    <button type="reset" class="col-3 btn btn-secondary form-control" style="width:80px;"> Reset </button>-->
                         </div>
+                        </form>
                     </table>
                 </div>
             </div>
