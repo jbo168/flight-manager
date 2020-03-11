@@ -41,4 +41,9 @@ public class UserDAOImpl implements UserDAO {
     public void deleteById(long id) {
         userRepository.deleteById(id);
     }
+
+    @Override
+    public Customer findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }

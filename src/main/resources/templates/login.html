@@ -24,19 +24,21 @@
                 <div id="loginFrmDiv" class="card-body">
                     <br>
                     <table>
+                        <form th:action="@{/login}" th:object="${customer}" method="POST">
                         <div class="form-inline">
-                            <label class = "col-3 col-form-label" for="usernameLogin">Username: </label>
-                            <input type="text" id="usernameLogin" name ="usernameLogin" class="col-6 form-control" placeholder="Enter Your Username"/>
+                            <label class = "col-3 col-form-label">Email: </label>
+                            <input type="text" th:field="*{email}" class="col-6 form-control"/>
                         </div>
                         <br>
                         <div class="form-inline mt-2">
-                            <label class="col-3 col-form-label" for="passwordLogin">Password:</label>
-                            <input type="password" id="passwordLogin" name ="passwordLogin" class="col-6 form-control" placeholder="Enter Your Password" />
+                            <label class="col-3 col-form-label">Password:</label>
+                            <input type="password" th:field="*{password}" class="col-6 form-control"/>
                         </div>
                         <br>
                         <div class="form-inline text-center d-block mt-2">
                             <button id="loginSubmit" name="loginSubmit" type="submit" class="col-2 btn btn-primary mr-4">Login</button>
                         </div>
+                        </form>
                     </table>
                 </div>
             </div>

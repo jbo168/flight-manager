@@ -13,5 +13,8 @@ public interface UserService {
     Customer update(Customer flight);
     Optional<Customer> findById(long id);
     List<Customer> findAll();
+
+    Customer findByEmail(String email);
+
     void deleteById(long id);
 }

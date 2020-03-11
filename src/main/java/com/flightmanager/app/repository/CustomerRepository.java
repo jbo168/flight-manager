@@ -11,6 +11,5 @@ import java.util.List;
  * @create: 24-Feb-2020
  **/
 
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
-
+public interface CustomerRepository extends CrudRepository<Customer, Long>, CustomCustomerRepository<Customer, String> {
 }

@@ -13,4 +13,5 @@ public interface UserDAO {
     List<Customer> findAll();
     void deleteById(long id);
 
+    Customer findByEmail(String email);
 }

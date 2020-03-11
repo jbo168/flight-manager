@@ -2,7 +2,6 @@ package com.flightmanager.app.serviceImpl;
 
 import com.flightmanager.app.dao.UserDAO;
 import com.flightmanager.app.model.Customer;
-import com.flightmanager.app.repository.CustomerRepository;
 import com.flightmanager.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +34,10 @@ public class UserServiceImpl implements UserService {
     public List<Customer> findAll() {
         List<Customer> flightList = (List<Customer>) userDAO.findAll();
         return flightList;
+    }
+    @Override
+    public Customer findByEmail(String email) {
+        return userDAO.findByEmail(email);
     }
 
     @Override
