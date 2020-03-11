@@ -5,5 +5,5 @@ package com.flightmanager.app.builder;
  * @create: 29-Feb-2020
  **/
 
-public class ClientUserBuilder extends UserBuilder {
+public class CustomerUserBuilder extends UserBuilder {
 }

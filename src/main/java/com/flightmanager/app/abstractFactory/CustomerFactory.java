@@ -1,12 +1,12 @@
 package com.flightmanager.app.abstractFactory;
 
-import com.flightmanager.app.builder.ClientUserBuilder;
+import com.flightmanager.app.builder.CustomerUserBuilder;
 
 public class CustomerFactory extends AbstractFactory{
 
     @Override
-    public ClientUserBuilder getUser(){
-            return new ClientUserBuilder();
+    public CustomerUserBuilder getUser(){
+            return new CustomerUserBuilder();
     }
 
 }
