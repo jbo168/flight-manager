@@ -8,7 +8,7 @@ public class User {
     private String firstname; // optional
     private String lastname; // optional
     private int contact; // optional
-    private final String accType; // required
+    private String accType; // required
 
     public User(){}
 
