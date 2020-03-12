@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface UserFlightsService {
     String testMapping();
-    Optional<Booking> displayFlights(int id);
+    Optional<Flight> displayFlights(int id);
 }

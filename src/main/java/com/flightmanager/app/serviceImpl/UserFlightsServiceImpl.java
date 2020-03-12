@@ -21,7 +21,7 @@ public class UserFlightsServiceImpl implements UserFlightsService {
         return "Working";
     }
     @Override
-    public Optional<Booking> displayFlights(int id){
+    public Optional<Flight> displayFlights(int id){
             return bookingDAO.findById(id);
     }
 
