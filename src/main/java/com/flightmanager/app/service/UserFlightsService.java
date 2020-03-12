@@ -1,9 +1,11 @@
 package com.flightmanager.app.service;
 
+import com.flightmanager.app.model.Booking;
 import com.flightmanager.app.model.Flight;
-import com.flightmanager.app.model.User;
+
+import java.util.Optional;
 
 public interface UserFlightsService {
     String testMapping();
-    Flight displayFlights();
+    Optional<Booking> displayFlights(int id);
 }
