@@ -10,43 +10,40 @@
     </script>
     <!--    <link href="../static/css/index.css"-->
     <!--          th:href="@{css/index.css}" rel="stylesheet"/>-->
-    <title>Your FLights</title>
+    <title>Your Flights</title>
 </head>
 <body class="container">
-<h1> Your Flights</h1>
-<div class="container">
-    <br>
-    <div class = "row">
-        <h2>Your Tickets</h2>
-    </div>
+<div class="container-fluid">
+    <h3> Your Tickets</h3>
     <br>
     <div class="row">
-        <div class="col-9">
-            <div class="card">
+        <div class="col-7">
+            <div th:each="flight : ${usersCurrentFlights}" class="card mb-2">
                 <div class="card-header">
-                    <h2>Flight Information</h2>
+                    <h4>Flight Information</h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <h5 class="col-4">Destination :</h5><p class="col-5" th:text="${usersCurrentFlights.get().getRouteTo()}" ></p>
+                        <h5 class="col-3">Destination :</h5><p class="col-4" th:text="${flight.getRouteTo()}" ></p>
                     </div>
                     <div class="row">
-                        <h5 class="col-4">From :</h5><p class="col-5" th:text="${usersCurrentFlights.get().getRouteFrom()}" ></p>
+                        <h5 class="col-3">From :</h5><p class="col-4" th:text="${flight.getRouteFrom()}" ></p>
                     </div>
                     <div class="row">
-                        <h5 class="col-4">Airline :</h5><p class="col-5" th:text="${usersCurrentFlights.get().getAirline()}" ></p>
+                        <h5 class="col-3">Airline :</h5><p class="col-4" th:text="${flight.getAirline()}" ></p>
                     </div>
                     <div class="row">
-                        <h5 class="col-4">Cost (€) :</h5><p class="col-5" th:text="${usersCurrentFlights.get().getCost()}" ></p>
+                        <h5 class="col-3">Cost (€) :</h5><p class="col-4" th:text="${flight.getCost()}" ></p>
                     </div>
                     <div class="row">
-                        <h5 class="col-4">Departure :</h5>
+                        <h5 class="col-3">Departure :</h5>
                     </div>
                     <div class="row">
-                        <h5 class="col-4">Status :</h5>
+                        <h5 class="col-3">Status :</h5>
                     </div>
                 </div>
             </div>
+            <br>
         </div>
     </div>
 </div>

@@ -28,11 +28,17 @@ public class UserFlightsController {
 //        return "userFlights";
 //    }
 
-    @GetMapping(value = "/userFlights")
-    public String listFlights(Model model) {
-        model.addAttribute("usersCurrentFlights", checkFlightsService.displayFlights(1));
-        return "userFlights";
-    }
+//    @GetMapping(value = "/userFlights")
+//    public String listFlights(Model model) {
+//        model.addAttribute("usersCurrentFlights", checkFlightsService.displayFlights(1));
+//        return "userFlights";
+//    }
+        @GetMapping(value = "/userFlights")
+        public String listFlights(Model model) {
+            model.addAttribute("usersCurrentFlights", checkFlightsService.findAll(2));
+            return "userFlights";
+        }
+
 
 
 
