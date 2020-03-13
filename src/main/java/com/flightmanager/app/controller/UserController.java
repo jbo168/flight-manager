@@ -18,21 +18,22 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model) {
-        model.addAttribute("customer", new Customer());
+    public String login(Customer customer) {
         return "login";
     }
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String checkLogin(@ModelAttribute(name="customer") Customer customer) {
+    public String checkLogin(@ModelAttribute(name="customer") Customer customer, Model model) {
 
         String email = customer.getEmail();
         String password = customer.getPassword();
 
-        Customer cust = userService.findByEmail(email);
-        if(email.equals(cust.getEmail()) && password.equals(cust.getPassword())){
-            return "flights";
+        boolean isLoginValid = userService.validLogin(email, password);
+
+        if(isLoginValid){
+            return "redirect:/flights";
         }
-        return "index";
+        model.addAttribute("isLoginValid", "msg");
+        return "login";
     }
     @GetMapping(value = "/register")
     public String register(Model model){
@@ -40,9 +41,23 @@ public class UserController {
         model.addAttribute("customer", new Customer());
         return "register";
     }
-    @RequestMapping(value = "/flights", method = RequestMethod.POST)
-    public String createUser(Customer customer) {
-        Customer newCustomer = userService.update(customer);
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String createUser(@ModelAttribute Customer customer, Model model) {
+
+        String email = customer.getEmail();
+        boolean isRegisterValid = userService.validRegister(customer);
+
+        if(userService.findByEmail(email) == null) {
+            if (isRegisterValid) {
+                userService.update(customer);
+                return "redirect:/flights";
+            }
+            model.addAttribute("isRegisterValid", "msg");
+            return "register";
+        }
+        model.addAttribute("emailExists", "Email already exists");
+        return "register";
+    }
 //        User newUser = new User.UserBuilder(user.getUsername(),user.getPassword(),user.getEmail(),user.getAccType())
 //                .setFirstName(user.getFirstname())
 //                .setLastName(user.getLastname())
@@ -54,7 +69,5 @@ public class UserController {
 //        customer.setLast_name(newUser.getLastname());
 //        customer.setPassword(newUser.getPassword());
 //        customer.setContact(newUser.getContact());
-        return "flights";
-    }
 
 }
