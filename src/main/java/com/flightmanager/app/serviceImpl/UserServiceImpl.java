@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
         List<Customer> flightList = (List<Customer>) userDAO.findAll();
         return flightList;
     }
+
     @Override
     public Customer findByEmail(String email) {
         return userDAO.findByEmail(email);
@@ -43,5 +44,34 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(long id) {
         userDAO.deleteById(id);
+    }
+
+    @Override
+    public boolean validLogin(String email, String password) {
+        Customer cust = userDAO.findByEmail(email);
+        if(cust != null){
+            if (email.equals(cust.getEmail()) && password.equals(cust.getPassword())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean validRegister(Customer customer) {
+        boolean isValid = true;
+        if (customer.getFirst_name() != null && customer.getLast_name() != null && customer.getContact() != null &&
+                customer.getEmail() != null && customer.getPassword() != null) {
+            if (!((customer.getEmail().matches("[A-Za-z0-9@._]*"))) || !(customer.getEmail().length() < 30)) {
+                isValid = false;
+            }
+            else if (!(customer.getContact().length() < 11) || !(customer.getContact().matches("[0-9]{11}"))) {
+                isValid = false;
+            }
+            else{
+                isValid = true;
+            }
+        }
+        return isValid;
     }
 }

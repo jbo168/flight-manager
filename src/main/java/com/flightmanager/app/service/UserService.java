@@ -13,6 +13,8 @@ public interface UserService {
     Customer update(Customer flight);
     Optional<Customer> findById(long id);
     List<Customer> findAll();
+    boolean validLogin(String email, String password);
+    boolean validRegister(Customer customer);
 
     Customer findByEmail(String email);
 
