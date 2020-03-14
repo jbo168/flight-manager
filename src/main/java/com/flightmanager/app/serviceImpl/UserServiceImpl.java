@@ -2,6 +2,7 @@ package com.flightmanager.app.serviceImpl;
 
 import com.flightmanager.app.dao.UserDAO;
 import com.flightmanager.app.model.Customer;
+import com.flightmanager.app.security.SecurityConfig;
 import com.flightmanager.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserDAO userDAO;
 
+    @Autowired
+    SecurityConfig config;
+
     @Override
     public void save(Customer user) {
         userDAO.save(user);
@@ -22,6 +26,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Customer update(Customer user) {
+        user.setPassword(config.passEncoder().encode(user.getPassword()));
         return userDAO.save(user);
     }
 
@@ -32,8 +37,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Customer> findAll() {
-        List<Customer> flightList = (List<Customer>) userDAO.findAll();
-        return flightList;
+        List<Customer> customerList = (List<Customer>) userDAO.findAll();
+        return customerList;
     }
 
     @Override
@@ -65,7 +70,7 @@ public class UserServiceImpl implements UserService {
             if (!((customer.getEmail().matches("[A-Za-z0-9@._]*"))) || !(customer.getEmail().length() < 30)) {
                 isValid = false;
             }
-            else if (!(customer.getContact().length() < 11) || !(customer.getContact().matches("[0-9]{11}"))) {
+            else if (!(customer.getContact().length() < 11) || !(customer.getContact().matches("[0-9]{10}"))) {
                 isValid = false;
             }
             else{
