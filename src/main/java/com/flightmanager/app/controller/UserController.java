@@ -21,6 +21,10 @@ public class UserController {
     public String login(Customer customer) {
         return "login";
     }
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout() {
+        return "logout";
+    }
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String checkLogin(@ModelAttribute(name="customer") Customer customer, Model model) {
 
