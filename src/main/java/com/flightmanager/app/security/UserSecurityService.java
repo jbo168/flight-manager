@@ -18,6 +18,9 @@ public class UserSecurityService implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
         Customer cust = userService.findByEmail(s);
+        if (cust == null) {
+            throw new UsernameNotFoundException(s);
+        }
         return cust;
     }
 }
