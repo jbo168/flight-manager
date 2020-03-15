@@ -15,6 +15,8 @@ public interface UserService {
     List<Customer> findAll();
     boolean validLogin(String email, String password);
     boolean validRegister(Customer customer);
+    void initiatePreRequest();
+    void initiatePostRequest();
 
     Customer findByEmail(String email);
 

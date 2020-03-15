@@ -19,12 +19,16 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Customer customer) {
+        userService.initiatePreRequest();
+
         return "login";
     }
+
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout() {
         return "logout";
     }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String checkLogin(@ModelAttribute(name="customer") Customer customer, Model model) {
 
@@ -34,17 +38,20 @@ public class UserController {
         boolean isLoginValid = userService.validLogin(email, password);
 
         if(isLoginValid){
+            userService.initiatePostRequest();
             return "redirect:/flights";
         }
         model.addAttribute("isLoginValid", "msg");
         return "login";
     }
+
     @GetMapping(value = "/register")
     public String register(Model model){
 //        model.addAttribute("register", customerFactory.getUser());
         model.addAttribute("customer", new Customer());
         return "register";
     }
+
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String createUser(@ModelAttribute Customer customer, Model model) {
 
@@ -62,16 +69,4 @@ public class UserController {
         model.addAttribute("emailExists", "Email already exists");
         return "register";
     }
-//        User newUser = new User.UserBuilder(user.getUsername(),user.getPassword(),user.getEmail(),user.getAccType())
-//                .setFirstName(user.getFirstname())
-//                .setLastName(user.getLastname())
-//                .setContact(user.getContact()).build();
-//
-//        Customer customer = new Customer();
-//        customer.setEmail(newUser.getEmail());
-//        customer.setFirst_name(newUser.getFirstname());
-//        customer.setLast_name(newUser.getLastname());
-//        customer.setPassword(newUser.getPassword());
-//        customer.setContact(newUser.getContact());
-
 }

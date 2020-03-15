@@ -6,9 +6,7 @@ import java.util.List;
 public class Dispatcher implements Interceptor{
     List<Interceptor> interceptors = new ArrayList<Interceptor>();
 
-    public Dispatcher(){
-        new ArrayList<Interceptor>();
-    }
+    Dispatcher dispatcher = new Dispatcher();
 
     @Override
     public void preMarshallRequest(AuthenticationObject context) {
@@ -39,16 +37,17 @@ public class Dispatcher implements Interceptor{
     }
 
     public Dispatcher getInstance(){
-        Dispatcher instance = new Dispatcher();
-        return instance;
+        return dispatcher;
     }
 
     public void register(Interceptor interceptor){
         interceptors.add(interceptor);
+        System.out.println("Interceptor has been registered");
     }
 
     public void remove(Interceptor interceptor){
         interceptors.remove(interceptor);
+        System.out.println("Interceptor has been removed");
     }
 
     public void dispatchEvent(AuthenticationObject context){

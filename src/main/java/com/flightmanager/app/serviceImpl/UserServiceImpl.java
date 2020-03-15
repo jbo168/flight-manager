@@ -1,9 +1,16 @@
 package com.flightmanager.app.serviceImpl;
 
+import com.flightmanager.app.controller.UserController;
 import com.flightmanager.app.dao.UserDAO;
+import com.flightmanager.app.interceptor.AuthenticationObject;
+import com.flightmanager.app.interceptor.ConcreteInterceptor;
+import com.flightmanager.app.interceptor.Dispatcher;
+import com.flightmanager.app.interceptor.Interceptor;
 import com.flightmanager.app.model.Customer;
 import com.flightmanager.app.security.SecurityConfig;
 import com.flightmanager.app.service.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +19,8 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    Logger logger = LogManager.getLogger();
 
     @Autowired
     UserDAO userDAO;
@@ -78,5 +87,27 @@ public class UserServiceImpl implements UserService {
             }
         }
         return isValid;
+    }
+
+    @Override
+    public void initiatePreRequest() {
+        Interceptor interceptor = new ConcreteInterceptor();
+        Dispatcher dispatcher = new Dispatcher();
+        AuthenticationObject context = new AuthenticationObject();
+
+        dispatcher.register(interceptor);
+        dispatcher.preMarshallRequest(context);
+        logger.info("PRE MARSHALL REQUEST INITIATED");
+    }
+
+    @Override
+    public void initiatePostRequest() {
+        Interceptor interceptor = new ConcreteInterceptor();
+        Dispatcher dispatcher = new Dispatcher();
+        AuthenticationObject context = new AuthenticationObject();
+
+        dispatcher.register(interceptor);
+        dispatcher.postMarshallRequest(context);
+        logger.info("POST MARSHALL REQUEST INITIATED");
     }
 }
