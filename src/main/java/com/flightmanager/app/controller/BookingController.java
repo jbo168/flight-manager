@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BookingController {
 
-    @GetMapping("/bookFlight")
+    @GetMapping(value = "/bookFlight")
     public String index() {
         return "bookFlight";
     }
-    
+
 }
