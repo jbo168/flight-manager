@@ -1,5 +1,6 @@
 package com.flightmanager.app.builder;
 
+import com.flightmanager.app.model.Customer;
 import com.flightmanager.app.model.User;
 
 /**
@@ -14,11 +15,13 @@ public class UserDirector {
         userBuilder = ub;
     }
 
-    public User getUser(){
-        return userBuilder.getUser();
+    public Customer getCustomer(){
+        return userBuilder.getCustomer();
     }
 
-    public void constructUser(){
-        userBuilder.createNewUserProduct();
+    public void constructCustomerUser(){
+        userBuilder.createNewCustomerUser();
+//        userBuilder.buildCustomerID(int id)
     }
+
 }

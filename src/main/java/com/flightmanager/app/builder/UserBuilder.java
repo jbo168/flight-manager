@@ -1,6 +1,5 @@
 package com.flightmanager.app.builder;
-
-import com.flightmanager.app.model.User;
+import com.flightmanager.app.model.Customer;
 
 /**
  * @author: John Long
@@ -8,13 +7,29 @@ import com.flightmanager.app.model.User;
  **/
 
 public abstract class UserBuilder {
-    protected User user;
+    protected Customer customer;
 
-    public User getUser(){
-        return user;
+    public Customer getCustomer(){
+        return customer;
     }
 
-    public void createNewUserProduct(){
-        user = new User();
+    public void createNewCustomerUser(){
+        customer = new Customer();
     }
+
+    public abstract void buildCustomerID(int id);
+
+    public abstract void buildFirstName(String firstName);
+
+    public abstract void buildLastName(String lastName);
+
+    public abstract void buildPassword(String password);
+
+    public abstract void buildEmail(String email);
+
+    public abstract void buildContact(String contact);
+
+    public void createNewSystemManagerUser(){}
+
+    public void createNewSystemAdminUser(){}
 }

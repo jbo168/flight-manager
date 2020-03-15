@@ -6,4 +6,33 @@ package com.flightmanager.app.builder;
  **/
 
 public class AdminUserBuilder extends UserBuilder {
+    @Override
+    public void buildCustomerID(int id) {
+
+    }
+
+    @Override
+    public void buildFirstName(String firstName) {
+
+    }
+
+    @Override
+    public void buildLastName(String lastName) {
+
+    }
+
+    @Override
+    public void buildPassword(String password) {
+
+    }
+
+    @Override
+    public void buildEmail(String email) {
+
+    }
+
+    @Override
+    public void buildContact(String contact) {
+
+    }
 }

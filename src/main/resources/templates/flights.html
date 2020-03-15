@@ -40,7 +40,15 @@
                 <td><a th:href="${'flight/remove/' + flight.flightId}">Remove</a></td>
             </tr>
         </table>
-        <a th:href="${'flight/add'}"> New Flight</a>
+        <div class="row">
+            <div class="col-md-4">
+                <a th:href="${'flight/add'}"> New Flight</a>
+            </div>
+            <div class="col-md-4">
+                <a th:href="${'flight/bookFlight'}"> New Flight</a>
+            </div>
+        </div>
+
     </div>
 </div>
 <button th:onclick="window.location.href = '/logout'">Logout</button>
