@@ -6,18 +6,13 @@ import java.util.Date;
 
 public class AuthenticationObject {
 
-    private long id;
     private String username;
     private boolean status;
 
-    public AuthenticationObject(long id, String username, boolean status){
-        this.id = id;
+    public AuthenticationObject(String username, boolean status){
         this.username = username;
         this.status = status;
     }
-
-    public AuthenticationObject(){};
-
     public String getDate(){
         DateFormat chosenFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
@@ -30,8 +25,11 @@ public class AuthenticationObject {
         return time;
     }
 
-    public String getDescription(){
-        String result = "ID: " + id + "Username: " + "Status: " + status + "Dated: " + getDate();
-        return result;
+    public String getUser(){
+        return username;
+    }
+
+    public boolean getStatus(){
+        return status;
     }
 }

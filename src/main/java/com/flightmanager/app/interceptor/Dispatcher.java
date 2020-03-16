@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dispatcher implements Interceptor{
-    List<Interceptor> interceptors = new ArrayList<Interceptor>();
+    List<Interceptor> interceptors;
 
-    Dispatcher dispatcher = new Dispatcher();
+    public Dispatcher(){
+        interceptors = new ArrayList<Interceptor>();
+    }
 
     @Override
     public void preMarshallRequest(AuthenticationObject context) {
@@ -18,7 +20,7 @@ public class Dispatcher implements Interceptor{
     @Override
     public void postMarshallRequest(AuthenticationObject context) {
         for(Interceptor interceptor : interceptors){
-            interceptor.preMarshallRequest(context);
+            interceptor.postMarshallRequest(context);
         }
     }
 
@@ -36,24 +38,19 @@ public class Dispatcher implements Interceptor{
         }
     }
 
-    public Dispatcher getInstance(){
-        return dispatcher;
-    }
-
     public void register(Interceptor interceptor){
         interceptors.add(interceptor);
-        System.out.println("Interceptor has been registered");
     }
 
-    public void remove(Interceptor interceptor){
-        interceptors.remove(interceptor);
-        System.out.println("Interceptor has been removed");
-    }
+//    public void remove(Interceptor interceptor){
+//        interceptors.remove(interceptor);
+//        System.out.println("Interceptor has been removed");
+//    }
 
-    public void dispatchEvent(AuthenticationObject context){
-        for(int i = 0; i < interceptors.size(); i++){
-            ConcreteInterceptor concreteInterceptor = (ConcreteInterceptor) interceptors.get(i);
-            concreteInterceptor.onEvent(context);
-        }
-    }
+//    public void dispatchEvent(AuthenticationObject context){
+//        for(int i = 0; i < interceptors.size(); i++){
+//            ConcreteInterceptor concreteInterceptor = (ConcreteInterceptor) interceptors.get(i);
+//            concreteInterceptor.onEvent(context);
+//        }
+//    }
 }

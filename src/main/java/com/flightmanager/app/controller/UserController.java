@@ -19,12 +19,10 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Customer customer) {
-        userService.initiatePreRequest();
-
         return "login";
     }
 
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public String logout() {
         return "logout";
     }
@@ -38,7 +36,6 @@ public class UserController {
         boolean isLoginValid = userService.validLogin(email, password);
 
         if(isLoginValid){
-            userService.initiatePostRequest();
             return "redirect:/flights";
         }
         model.addAttribute("isLoginValid", "msg");

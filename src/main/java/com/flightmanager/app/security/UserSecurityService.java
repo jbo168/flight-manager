@@ -15,12 +15,15 @@ public class UserSecurityService implements UserDetailsService {
     UserService userService;
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        userService.initiatePreRequest(username, false);
 
-        Customer cust = userService.findByEmail(s);
+        Customer cust = userService.findByEmail(username);
         if (cust == null) {
-            throw new UsernameNotFoundException(s);
+            userService.initiatePostRequest(username, false);
+            throw new UsernameNotFoundException(username);
         }
+        userService.initiatePostRequest(username, true);
         return cust;
     }
 }

@@ -1,38 +1,35 @@
 package com.flightmanager.app.interceptor;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Date;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ConcreteInterceptor implements Interceptor{
 
-    @Autowired
-    Logger logger;
+
+    Logger logger = LoggerFactory.getLogger(ConcreteInterceptor.class);
 
     @Override
     public void preMarshallRequest(AuthenticationObject context) {
-        System.out.println("Authentication initiated");
+        logger.info("Authentication initiated");
     }
 
     @Override
     public void postMarshallRequest(AuthenticationObject context) {
-        System.out.println("User logged-in at: " + context.getDate());
+        if(context.getStatus() == true){
+            logger.info("User: " + context.getUser() + " authenticated at: " + context.getDate() + " ;Log-in Status: " + context.getStatus());
+        }
+        else {
+            logger.info("User: " + context.getUser() + " attempted to log-in at: " + context.getDate() + " ;Log-in Status:" + context.getStatus());
+        }
     }
 
     @Override
     public void preMarshallReply(AuthenticationObject context) {
-        System.out.println("User log-out initiated");
+        logger.info("User log-out initiated");
     }
 
     @Override
     public void postMarshallReply(AuthenticationObject context) {
-        Date logout = new Date();
-        long time = logout.getTime();
-        System.out.println("User logged-out at: " + context.getDate());
-        System.out.println("User spent: " + (time - (context.getTime())) + " within the system");
-    }
-
-    public void onEvent(AuthenticationObject context){
-        logger.logEvent(context);
+        logger.info("User: " + context.getUser() + " Logged-out at: " + context.getDate() + " ;Log-in status: " + context.getStatus());
     }
 }
