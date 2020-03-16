@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -36,11 +37,12 @@
                         <h5 class="col-3">Cost (€) :</h5><p class="col-4" th:text="${flight.getCost()}" ></p>
                     </div>
                     <div class="row">
-                        <h5 class="col-3">Departure :</h5>
+                        <h5 class="col-3">Departure :</h5><p class="col-4" th:text="${flight.getDate()}" ></p>
                     </div>
                     <div class="row">
-                        <h5 class="col-3">Status :</h5>
+                        <h5 class="col-3">Status :</h5><p class="col-4" th:text="${flight.getStatus()}" ></p>
                     </div>
+                    <div><a class="btn btn-primary" th:href="${'/addReview/' + flight.getFlightId()}">Review Flight</a></div>
                 </div>
             </div>
             <br>

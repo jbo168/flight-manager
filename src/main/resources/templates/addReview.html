@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
+          rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.min.js}">
+    </script>
+    <title>Your Flights</title>
+</head>
+<body class="container">
+<div class="container-fluid">
+    <h3> Your Tickets</h3>
+    <br>
+    <div class="row">
+        <div class="col-8">
+            <div class="row card mb-2">
+                <div class="card-header">
+                    <h4>Leave a Review</h4>
+                </div>
+                <form  action="@/userFlights"  th:object="${booking}" th:action="@{/userFlights}" method="post">
+
+                    <input type="hidden" th:field="*{booking_ID}"/>
+                    <input type="hidden" th:field="*{flight_ID}"/>
+                    <input type="hidden" th:field="*{customer_ID}"/>
+
+                    <div class="card-body">
+                        <div class="form-row">
+                            <label class="col-2 form-check-label">Comment : </label>
+                            <input  th:field="*{comment}" type="text" class="text-area form-control-lg form-inline col-6" />
+                        </div>
+                     <br>
+                        <div class="form-row">
+                            <label class="col-2 form-check-label">Score : </label>
+                            <input th:field="*{score}" type="text" class="from-control form-inline  col-1" />
+                        </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Submit" class="btn btn-success" />
+                </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

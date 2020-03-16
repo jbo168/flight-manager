@@ -21,7 +21,7 @@ public class FlightDAOImpl implements FlightDAO {
     }
 
     @Override
-    public Flight update(Flight flight) {
+    public Flight update (Flight flight) {
         return flightRepository.save(flight);
     }
 

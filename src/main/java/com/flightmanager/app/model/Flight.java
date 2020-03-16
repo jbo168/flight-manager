@@ -14,6 +14,8 @@ public class Flight {
     private String routeFrom;
     private String routeTo;
     private int tickets;
+    private String departure;
+    private String status;
 
     @Column(name = "flight_id")
     public int getFlightId() {
@@ -72,5 +74,25 @@ public class Flight {
 
     public void setTickets(int tickets) {
         this.tickets = tickets;
+    }
+
+    @Basic
+    @Column(name = "departure")
+    public String getDate() {
+        return departure;
+    }
+
+    public void setDate(String depart) {
+        this.departure = depart;
+    }
+
+    @Basic
+    @Column(name = "status")
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
