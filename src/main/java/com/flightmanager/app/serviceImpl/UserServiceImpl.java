@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Customer update(Customer user) {
-        user.setPassword(config.passEncoder().encode(user.getPassword()));
+        user = new Customer.CustomerBuilder().setPassword(config.passEncoder().encode(user.getPassword())).build();
         return userDAO.save(user);
     }
 
