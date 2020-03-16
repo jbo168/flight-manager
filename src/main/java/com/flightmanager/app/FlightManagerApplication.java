@@ -12,8 +12,8 @@ public class FlightManagerApplication {
         SpringApplication.run(FlightManagerApplication.class, args);
         Long id = 7L;
 
-        Customer customer = new Customer.CustomerBuilder().setFirstName("jim").build();
-        System.out.println(customer.getFirst_name());
+//        Customer customer = new Customer.CustomerBuilder().setFirstName("jim").build();
+//        System.out.println(customer.getFirst_name());
     }
 
 }
