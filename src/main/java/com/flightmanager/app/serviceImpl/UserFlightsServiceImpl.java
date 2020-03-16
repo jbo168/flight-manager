@@ -18,22 +18,20 @@ public class UserFlightsServiceImpl implements UserFlightsService {
     @Autowired
     BookingDAO bookingDAO;
 
+
     @Override
-    public String testMapping(){
-        return "Working";
-    }
-    @Override
-    public Optional<Flight> displayFlights(int id){
-            return bookingDAO.findById(id);
+    public Optional<Booking> findByID(int i) {  return bookingDAO.findById(i); }
+
+    public Booking update(Booking booking){ return bookingDAO.update(booking); }
+
+    public void getInfo(int id){
+        System.out.print("KK");
     }
 
     public ArrayList<Flight> findAll(int id) {
         ArrayList<Booking> bookings = bookingDAO.findAll();
-        ArrayList<Integer> flightIds = new ArrayList<Integer>();
-        int size = 0 , test = 0;
+        ArrayList<Integer> flightIds = new ArrayList<>();
         for(int i=0; bookings.size() > i ;i++){
-            size =  bookings.get(i).getCustomer_ID();
-            test = id;
             if(bookings.get(i).getCustomer_ID() == id) {
                 flightIds.add(bookings.get(i).getFlight_ID());
             }
@@ -41,5 +39,17 @@ public class UserFlightsServiceImpl implements UserFlightsService {
         ArrayList<Flight> myFlight = (ArrayList<Flight>) flightRepository.findAllById(flightIds);
         return myFlight;
     }
+
+    public ArrayList<Booking> returnBookings(int id){
+        ArrayList<Booking> bookings = bookingDAO.findAll();
+        ArrayList<Booking> bookingIds = new ArrayList<>();
+        for(int i=0; bookings.size() > i ;i++){
+            if(bookings.get(i).getCustomer_ID() == id) {
+                bookingIds.add(bookings.get(i));
+            }
+        }
+        return bookingIds;
+    }
+
 
 }

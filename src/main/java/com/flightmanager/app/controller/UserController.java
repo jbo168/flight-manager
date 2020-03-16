@@ -37,7 +37,7 @@ public class UserController {
 
         if(isLoginValid){
             return "redirect:/flights";
-        }
+    }
         model.addAttribute("isLoginValid", "msg");
         return "login";
     }

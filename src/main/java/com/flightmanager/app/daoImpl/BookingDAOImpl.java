@@ -28,15 +28,12 @@ public class BookingDAOImpl implements BookingDAO {
 
     @Override
     public Booking update(Booking booking) {
-        ///return bookingRepository.update();
-        return booking;
+        return bookingRepository.save(booking);
     }
 
     @Override
-    public Optional<Flight> findById(int id) {
-         Optional <Booking> bookingIds =  bookingRepository.findById(id);
-         int flightId =  bookingIds.get().getFlight_ID();
-         return flightRepository.findById(flightId);
+    public Optional<Booking> findById(int id) {
+        return bookingRepository.findById(id);
     }
 
     @Override
@@ -45,17 +42,5 @@ public class BookingDAOImpl implements BookingDAO {
         return bookings ;
     }
 
-
-
-    //    @Override
-//    public ArrayList<Flight> findAllById(int id) {
-//        ArrayList<Integer> flightIds = new ArrayList<Integer>();
-//        ArrayList<Booking> bookings = (ArrayList<Booking>) bookingRepository.findAllById(Collections.singleton(id));
-//           for(int i=0; bookings.size() < i ;i++){
-//            if(i%3 == 0) flightIds.add(bookings.get(i).getFlight_ID());
-//        }
-//       ArrayList<Flight> myFlight = (ArrayList<Flight>) flightRepository.findAllById(flightIds);
-//       return myFlight;
-//    }
 
 }

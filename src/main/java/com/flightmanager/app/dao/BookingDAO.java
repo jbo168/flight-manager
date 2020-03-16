@@ -10,7 +10,7 @@ public interface BookingDAO {
 
     void save(Booking booking);
     Booking update(Booking booking);
-    Optional<Flight> findById(int id);
+    Optional<Booking> findById(int id);
     ArrayList<Booking> findAll();
 
 }
