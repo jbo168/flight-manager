@@ -20,9 +20,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     SecurityConfig config;
 
-    @Autowired
-    Logger logger;
-
     @Override
     public void save(Customer user) {
         userDAO.save(user);

@@ -32,7 +32,7 @@ public class Customer implements UserDetails {
     @Column(name = "contact")
     private String contact;
 
-    @Column(name = "accType")
+    @Column(name = "acc_type")
     private String accType;
 
     public Customer(){}
