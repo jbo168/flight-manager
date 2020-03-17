@@ -1,7 +1,6 @@
 package com.flightmanager.app.builder;
 
 import com.flightmanager.app.model.Customer;
-import com.flightmanager.app.model.User;
 
 /**
  * @author: John Long
