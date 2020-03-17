@@ -75,6 +75,10 @@ public class Booking extends Ticket {
 
     }
 
+    public void book(){
+        // notify observers
+    }
+
     public int getScore() {
         return score;
     }
