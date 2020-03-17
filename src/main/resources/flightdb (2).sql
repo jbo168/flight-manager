@@ -29,8 +29,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `booking` (
-  `booking_id` int(11) NOT NULL
+  `booking_id` int(11) NOT NULL ,
+  `flight_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `comment` varchar(255) DEFAULT NULL,
+  `score` varchar(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Dumping data for table `booking`
+--
+
+
+INSERT INTO `booking` (`booking_id`, `flight_id`, `customer_id`, `comment`, `score`) VALUES
+(1, 2, 2, 'HELLO', '1'),
+(2, 3, 2, 'yeeee', '69'),
+(3, 3, 5, 'Nice Flight I like very 2', '61');
+
 
 -- --------------------------------------------------------
 
@@ -91,7 +107,9 @@ INSERT INTO `flight` (`flight_id`, `airline`, `cost`, `route_from`, `route_to`, 
 -- Indexes for table `booking`
 --
 ALTER TABLE `booking`
-  ADD PRIMARY KEY (`booking_id`);
+  ADD PRIMARY KEY (`booking_id`),
+  ADD KEY `FK_Flights` (`flight_id`),
+  ADD KEY `FK_Customers` (`customer_id`);
 
 --
 -- Indexes for table `customer`
@@ -108,6 +126,8 @@ ALTER TABLE `flight`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+ALTER TABLE `booking`
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -120,6 +140,13 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `flight`
   MODIFY `flight_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
+
+
+ALTER TABLE `booking`
+  ADD CONSTRAINT `FK_Customers` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_Flights` FOREIGN KEY (`flight_id`) REFERENCES `flight` (`flight_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
