@@ -44,14 +44,21 @@ public class UserController {
 
     @GetMapping(value = "/register")
     public String register(Model model){
-//        model.addAttribute("register", customerFactory.getUser());
+//        model.addAttribute("register", customerFactory.getUser()); = USING ABSTRACT
         model.addAttribute("customer", new Customer());
+//        model.addAttribute("customer", new Customer.CustomerBuilder().build());
         return "register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String createUser(@ModelAttribute Customer customer, Model model) {
-
+//
+//        customer = new Customer.CustomerBuilder()
+//                .setPassword(customer.getPassword())
+//                .setEmail(customer.getEmail())
+//                .setContact(customer.getContact())
+//                .setFirstName(customer.getFirst_name())
+//                .setLastName(customer.getLast_name()).build();
         String email = customer.getEmail();
         boolean isRegisterValid = userService.validRegister(customer);
 
