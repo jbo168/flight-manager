@@ -13,6 +13,7 @@ public class AuthenticationObject {
         this.username = username;
         this.status = status;
     }
+
     public String getDate(){
         DateFormat chosenFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();

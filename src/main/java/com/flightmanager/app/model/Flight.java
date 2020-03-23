@@ -1,6 +1,10 @@
 package com.flightmanager.app.model;
 
+import com.flightmanager.app.bridge.FlightImplementor;
+
 import javax.persistence.*;
+
+//Flight Info
 
 @Entity
 @Table(name = "flight", schema = "flightdb")
@@ -16,6 +20,8 @@ public class Flight {
     private int tickets;
     private String departure;
     private String status;
+//    private int first_class_tickets;
+
 
     @Column(name = "flight_id")
     public int getFlightId() {
@@ -95,4 +101,12 @@ public class Flight {
     public void setStatus(String status) {
         this.status = status;
     }
+
+//    public int getFirstClassTickets() {
+//        return first_class_tickets;
+//    }
+//
+//    public void setFirstClassTickets(int first_class_tickets) {
+//        this.first_class_tickets = first_class_tickets;
+//    }
 }
