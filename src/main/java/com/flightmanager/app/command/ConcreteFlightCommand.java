@@ -8,15 +8,15 @@ import java.util.List;
  * @create: 17-Mar-2020
  **/
 
-public class Broker {
-    public List<FlightBooking> bookingList = new ArrayList<>();
+public class ConcreteFlightCommand {
+    public List<FlightCommand> bookingList = new ArrayList<>();
 
-    public void takeFlightBooking(FlightBooking flightBooking){
+    public void takeFlightBooking(FlightCommand flightBooking){
         bookingList.add(flightBooking);
     }
 
     public void bookFlights(){
-        for(FlightBooking flightBooking: bookingList){
+        for(FlightCommand flightBooking : bookingList){
             flightBooking.execute();
         }
         bookingList.clear();

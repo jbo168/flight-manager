@@ -5,6 +5,6 @@ package com.flightmanager.app.command;
  * @create: 17-Mar-2020
  **/
 
-public interface FlightBooking {
+public interface FlightCommand {
     void execute();
 }

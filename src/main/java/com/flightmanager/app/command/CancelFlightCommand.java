@@ -1,21 +1,20 @@
 package com.flightmanager.app.command;
 
 import com.flightmanager.app.model.Booking;
-import com.flightmanager.app.model.Flight;
 
 /**
  * @author: John Long
  * @create: 17-Mar-2020
  **/
 
-public class CancelFlight implements FlightBooking{
+public class CancelFlightCommand implements FlightCommand {
     private Booking booking;
 
-    public CancelFlight (Booking booking){
+    public CancelFlightCommand(Booking booking){
         this.booking = booking;
     }
 
     public void execute() {
-        //TODO reduce number of seats booked on a particular flight by 1
+        //TODO remove flight booking from list of booked flights
     }
 }

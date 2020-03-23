@@ -17,6 +17,8 @@ public class Flight {
     private String departure;
     private String status;
 
+
+
     @Column(name = "flight_id")
     public int getFlightId() {
         return flightId;
