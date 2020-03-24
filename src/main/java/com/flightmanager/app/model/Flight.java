@@ -3,6 +3,9 @@ package com.flightmanager.app.model;
 import com.flightmanager.app.command.Observer;
 import com.flightmanager.app.command.Subject;
 
+import com.flightmanager.app.visitor.Visitable;
+import com.flightmanager.app.visitor.Visitor;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,7 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "flight", schema = "flightdb")
-public class Flight implements Subject {
+public class Flight implements Subject, Visitable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -84,6 +87,11 @@ public class Flight implements Subject {
 
     public void setTickets(int tickets) {
         this.tickets = tickets;
+    }
+
+    @Override
+    public int accept(Visitor visitor) {
+        return visitor.visit(this);
     }
 
     @Basic
