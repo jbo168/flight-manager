@@ -10,7 +10,6 @@ public class ConcreteInterceptor implements Interceptor{
 
     @Override
     public void preMarshallRequest(AuthenticationObject context) {
-
         logger.info("Authentication initiated  ;Log-in Status: " + context.getStatus());
     }
 

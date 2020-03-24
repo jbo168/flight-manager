@@ -7,10 +7,10 @@ import com.flightmanager.app.model.Booking;
  * @create: 17-Mar-2020
  **/
 
-public class BuyFlight implements FlightBooking{
+public class BookFlightCommand implements FlightCommand {
     private Booking booking;
 
-    public BuyFlight(Booking booking){
+    public BookFlightCommand(Booking booking){
         this.booking = booking;
     }
     public void execute() {

@@ -1,10 +1,16 @@
 package com.flightmanager.app.model;
 
+import com.flightmanager.app.command.Observer;
+import com.flightmanager.app.command.Subject;
+
 import javax.persistence.*;
+import java.util.List;
+
+//Flight Info
 
 @Entity
 @Table(name = "flight", schema = "flightdb")
-public class Flight {
+public class Flight implements Subject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +22,10 @@ public class Flight {
     private int tickets;
     private String departure;
     private String status;
+//    private int first_class_tickets;
+
+    @Transient
+    private List<Observer> observers;
 
     @Column(name = "flight_id")
     public int getFlightId() {
@@ -95,4 +105,22 @@ public class Flight {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public void notifyAllObservers() {
+        observers.forEach(Observer::update);
+    }
+
+    @Override
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+//    public int getFirstClassTickets() {
+//        return first_class_tickets;
+//    }
+//
+//    public void setFirstClassTickets(int first_class_tickets) {
+//        this.first_class_tickets = first_class_tickets;
+//    }
 }

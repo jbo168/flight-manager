@@ -15,7 +15,15 @@
 <body>
 <div class="container">
     <div th:id="${not #lists.isEmpty(flights)}">
-        <h2>Flight List</h2>
+        <br>
+        <div class="row">
+            <div class="col-md-2">
+                <h2>Flight List</h2>
+            </div>
+            <div class="col-md-2">
+                <button class="btn-danger" th:onclick="window.location.href = '/logout'">Logout</button>
+            </div>
+        </div>
         <table class="table table-striped">
             <tr>
                 <th>Id</th>
@@ -27,6 +35,7 @@
                 <th>View</th>
                 <th>Update</th>
                 <th>Remove</th>
+                <th>Booking</th>
             </tr>
             <tr th:each="flight : ${flights}">
                 <td th:text="${flight.flightId}"></td>
@@ -38,20 +47,21 @@
                 <td><a th:href="${'/flight/' + flight.flightId}">View Details</a></td>
                 <td><a th:href="${'flight/update/' + flight.flightId}">Update Details</a></td>
                 <td><a th:href="${'flight/remove/' + flight.flightId}">Remove</a></td>
+                <td><button class="btn-primary">Book</button></td>
             </tr>
         </table>
         <div class="row">
             <div class="col-md-4">
                 <a th:href="${'flight/add'}"> New Flight</a>
             </div>
-            <div class="col-md-4">
-                <a th:href="${'flight/bookFlight'}">Book Flight</a>
-            </div>
+<!--            <div class="col-md-4">-->
+<!--                <a th:="${'flight/bookFlight'}">Book Flight</a>-->
+<!--            </div>-->
         </div>
 
     </div>
 </div>
-<button th:onclick="window.location.href = '/logout'">Logout</button>
+
 
 </body>
 </html>

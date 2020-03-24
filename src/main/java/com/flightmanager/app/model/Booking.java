@@ -1,11 +1,8 @@
 package com.flightmanager.app.model;
 
-import com.flightmanager.app.bridge.Review;
-import com.flightmanager.app.bridge.Ticket;
-import com.flightmanager.app.bridge.TicketImplementor;
 
 import javax.persistence.*;
-import java.awt.print.Book;
+import java.util.List;
 
 
 /// Rectangle
@@ -13,28 +10,22 @@ import java.awt.print.Book;
 
 @Entity
 //@Table(name="booking")
-public class Booking extends Ticket {
+public class Booking{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
 //    @Column(name = "booking_ID")
     private int booking_ID;
     private int flight_ID;
     private int customer_ID;
-    private String comment;
-    private int score;
+    public String comment;
+    public int score;
 
-    public Booking(){
+    public Booking(Booking booking){
         super();
     }
 
-    public Booking(TicketImplementor ticket) {
-        super(ticket);
-    }
+    public Booking() {super();}
 
-    @Override
-    public void getInfo(int booking_ID) {
-        System.out.print("Booking");
-    }
 
     public int getBooking_ID() {
         return booking_ID;
@@ -60,27 +51,13 @@ public class Booking extends Ticket {
         this.customer_ID = customer_ID;
     }
 
-    @Override
-    public void checkReview() {
-
-    }
-
-    @Override
-    public void addReview(String comment, int score) {
-
-    }
-
-    @Override
-    public void updateStatus() {
-
-    }
 
     public void book(){
         // notify observers
     }
 
     public int getScore() {
-        return score;
+        return this.score;
     }
 
     public void setScore(int score) {
@@ -88,10 +65,12 @@ public class Booking extends Ticket {
     }
 
     public String getComment() {
-        return comment;
+        return this.comment;
     }
 
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+
 }
