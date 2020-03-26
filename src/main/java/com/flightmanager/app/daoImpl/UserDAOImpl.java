@@ -1,7 +1,7 @@
 package com.flightmanager.app.daoImpl;
 
 import com.flightmanager.app.dao.UserDAO;
-import com.flightmanager.app.model.Customer;
+import com.flightmanager.app.model.User;
 import com.flightmanager.app.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,24 +16,24 @@ public class UserDAOImpl implements UserDAO {
     CustomerRepository userRepository;
 
     @Override
-    public Customer save(Customer user) {
+    public User save(User user) {
         userRepository.save(user);
         return user;
     }
 
     @Override
-    public Customer update(Customer user) {
+    public User update(User user) {
         return userRepository.save(user);
     }
 
     @Override
-    public Optional<Customer> findById(long id) {
+    public Optional<User> findById(long id) {
         return userRepository.findById(id);
     }
 
     @Override
-    public List<Customer> findAll() {
-        List<Customer> flightList = (List<Customer>) userRepository.findAll();
+    public List<User> findAll() {
+        List<User> flightList = (List<User>) userRepository.findAll();
         return flightList;
     }
 
@@ -43,7 +43,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public Customer findByEmail(String email) {
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 }

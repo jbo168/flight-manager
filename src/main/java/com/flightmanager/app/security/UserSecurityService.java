@@ -1,6 +1,6 @@
 package com.flightmanager.app.security;
 
-import com.flightmanager.app.model.Customer;
+import com.flightmanager.app.model.User;
 import com.flightmanager.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +18,7 @@ public class UserSecurityService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         userService.initiatePreRequest(username, false);
 
-        Customer cust = userService.findByEmail(username);
+        User cust = userService.findByEmail(username);
         if (cust == null) {
             userService.initiatePostRequest(username, false);
             throw new UsernameNotFoundException(username);

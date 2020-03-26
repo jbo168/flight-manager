@@ -2,7 +2,7 @@ package com.flightmanager.app.serviceImpl;
 
 import com.flightmanager.app.dao.UserDAO;
 import com.flightmanager.app.interceptor.*;
-import com.flightmanager.app.model.Customer;
+import com.flightmanager.app.model.User;
 import com.flightmanager.app.security.SecurityConfig;
 import com.flightmanager.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,29 +21,29 @@ public class UserServiceImpl implements UserService {
     SecurityConfig config;
 
     @Override
-    public void save(Customer user) {
+    public void save(User user) {
         userDAO.save(user);
     }
 
     @Override
-    public Customer update(Customer user) {
+    public User update(User user) {
         user.setPassword(config.passEncoder().encode(user.getPassword()));
         return userDAO.save(user);
     }
 
     @Override
-    public Optional<Customer> findById(long id) {
+    public Optional<User> findById(long id) {
         return userDAO.findById(id);
     }
 
     @Override
-    public List<Customer> findAll() {
-        List<Customer> customerList = (List<Customer>) userDAO.findAll();
-        return customerList;
+    public List<User> findAll() {
+        List<User> userList = (List<User>) userDAO.findAll();
+        return userList;
     }
 
     @Override
-    public Customer findByEmail(String email) {
+    public User findByEmail(String email) {
         return userDAO.findByEmail(email);
     }
 
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean validLogin(String email, String password) {
-        Customer cust = userDAO.findByEmail(email);
+        User cust = userDAO.findByEmail(email);
         if(cust != null){
             if (email.equals(cust.getEmail()) && password.equals(cust.getPassword())) {
                 return true;
@@ -64,14 +64,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean validRegister(Customer customer) {
+    public boolean validRegister(User user) {
         boolean isValid = true;
-        if (customer.getFirst_name() != null && customer.getLast_name() != null && customer.getContact() != null &&
-                customer.getEmail() != null && customer.getPassword() != null) {
-            if (!((customer.getEmail().matches("[A-Za-z0-9@._]*"))) || !(customer.getEmail().length() < 30)) {
+        if (user.getFirst_name() != null && user.getLast_name() != null && user.getContact() != null &&
+                user.getEmail() != null && user.getPassword() != null) {
+            if (!((user.getEmail().matches("[A-Za-z0-9@._]*"))) || !(user.getEmail().length() < 30)) {
                 isValid = false;
             }
-            else if (!(customer.getContact().length() < 11) || !(customer.getContact().matches("[0-9]{10}"))) {
+            else if (!(user.getContact().length() < 11) || !(user.getContact().matches("[0-9]{10}"))) {
                 isValid = false;
             }
             else{

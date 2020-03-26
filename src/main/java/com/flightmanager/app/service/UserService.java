@@ -1,6 +1,6 @@
 package com.flightmanager.app.service;
 
-import com.flightmanager.app.model.Customer;
+import com.flightmanager.app.model.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -9,18 +9,18 @@ import java.util.Optional;
 @Component
 public interface UserService {
 
-    void save(Customer flight);
-    Customer update(Customer flight);
-    Optional<Customer> findById(long id);
-    List<Customer> findAll();
+    void save(User flight);
+    User update(User flight);
+    Optional<User> findById(long id);
+    List<User> findAll();
     boolean validLogin(String email, String password);
-    boolean validRegister(Customer customer);
+    boolean validRegister(User user);
     void initiatePreRequest(String username, boolean status);
     void initiatePostRequest(String username, boolean status);
     void initiatePreReply(String username, boolean status);
     void initiatePostReply(String username, boolean status);
 
-    Customer findByEmail(String email);
+    User findByEmail(String email);
 
     void deleteById(long id);
 }

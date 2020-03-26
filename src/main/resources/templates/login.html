@@ -24,7 +24,7 @@
                 <div id="loginFrmDiv" class="card-body">
                     <br>
                     <table>
-                        <form th:action="@{/login}" th:object="${customer}" method="POST">
+                        <form th:action="@{/login}" th:object="${user}" method="POST">
                         <div class="form-inline">
                             <label class = "col-3 col-form-label">Email: </label>
                             <input type="text" th:field="*{email}" class="col-6 form-control"/>

@@ -1,94 +1,125 @@
 package com.flightmanager.app.model;
 
-public class User {
-    private int id; // required
-    private String username; // required
-    private String password; // required
-    private String email; // required
-    private String firstname; // optional
-    private String lastname; // optional
-    private int contact; // optional
-    private String accType; // required
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-    public User(){}
+import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Collection;
 
-    public static class UserBuilder{
-        private final int id; // required
-        private final String username; // required
-        private final String password; // required
-        private final  String email; // required
-        private String firstname; // optional
-        private String lastname; // optional
-        private int contact; // optional
-        private final String accType; // required
-        public UserBuilder(int id, String username, String password, String email, String accType) {
-            this.id = id;
-            this.username = username;
-            this.password = password;
-            this.email = email;
-            this.accType  = accType;
-        }
+@Entity
+@Table(name = "user", schema = "flightdb")
+public class User implements UserDetails {
 
-        public UserBuilder setFirstName(String firstName){
-            this.firstname = firstName;
-            return this;
-        }
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private long user_ID;
 
-        public UserBuilder setLastName(String lastName){
-            this.lastname = lastName;
-            return this;
-        }
+    @Column(name = "first_name")
+    private String first_name;
 
-        public UserBuilder setContact(int contact){
-            this.contact = contact;
-            return this;
-        }
+    @Column(name = "last_name")
+    private String last_name;
 
-        public User build(){
-                return new User(this);
-        }
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "contact")
+    private String contact;
+
+    @Column(name = "account_type")
+    private String account_type;
+
+
+    public long getUser_ID() {
+        return user_ID;
     }
 
-    private User(UserBuilder userBuilder){
-        this.id = userBuilder.id;
-        this.username = userBuilder.username;
-        this.password = userBuilder.password;
-        this.email = userBuilder.email;
-        this.firstname = userBuilder.firstname;
-        this.lastname = userBuilder.lastname;
-        this.contact = userBuilder.contact;
-        this.accType  = userBuilder.accType;
+    public void setUser_ID(long user_ID) {
+        this.user_ID = user_ID;
     }
 
-    public int getId() {
-        return id;
+    public String getFirst_name() {
+        return first_name;
     }
 
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public String getAccount_type() {
+        return account_type;
+    }
+
+    public void setAccount_type(String account_type) {
+        this.account_type = account_type;
+    }
+
+    @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
+    @Override
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getLastname() {
-        return lastname;
-    }
-
-    public int getContact() {
+    public String getContact() {
         return contact;
     }
 
-    public String getAccType() {
-        return accType;
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority("USER"));
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

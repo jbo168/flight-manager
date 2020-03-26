@@ -48,10 +48,10 @@ INSERT INTO `booking` (`booking_id`, `flight_id`, `customer_id`, `comment`, `sco
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `customer` (
+CREATE TABLE `user` (
   `customer_id` int(11) NOT NULL,
   `contact` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -62,10 +62,10 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `customer`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `customer` (`customer_id`, `contact`, `email`, `first_name`, `last_name`, `password`, `acc_type`) VALUES
+INSERT INTO `user` (`customer_id`, `contact`, `email`, `first_name`, `last_name`, `password`, `acc_type`) VALUES
 (1, '123', '213123@R3F', 'Jimmy', 'Tommy', '123', NULL),
 (2, '084223123', 'rob@gmail.com', 'Rob', 'Bert', 'BertRob', NULL),
 (3, '2341313', '234', 'Dan', 'Curry', '1', NULL),
@@ -113,9 +113,9 @@ ALTER TABLE `booking`
   ADD KEY `FK_Customers` (`customer_id`);
 
 --
--- Indexes for table `customer`
+-- Indexes for table `user`
 --
-ALTER TABLE `customer`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`customer_id`);
 
 --
@@ -135,9 +135,9 @@ ALTER TABLE `booking`
   MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `customer`
+ALTER TABLE `user`
   MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
@@ -154,7 +154,7 @@ ALTER TABLE `flight`
 -- Constraints for table `booking`
 --
 ALTER TABLE `booking`
-  ADD CONSTRAINT `FK_Customers` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_Customers` FOREIGN KEY (`customer_id`) REFERENCES `user` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_Flights` FOREIGN KEY (`flight_id`) REFERENCES `flight` (`flight_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 

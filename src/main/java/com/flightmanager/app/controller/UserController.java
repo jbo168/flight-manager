@@ -2,7 +2,7 @@ package com.flightmanager.app.controller;
 
 import com.flightmanager.app.abstractFactory.AbstractFactory;
 import com.flightmanager.app.abstractFactory.ConcreteFactory;
-import com.flightmanager.app.model.Customer;
+import com.flightmanager.app.model.User;
 import com.flightmanager.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class UserController {
 
-    AbstractFactory customerFactory = ConcreteFactory.getFactory("Customer");
+    AbstractFactory customerFactory = ConcreteFactory.getFactory("User");
 
     @Autowired
     private UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Customer customer) {
+    public String login(User user) {
         return "login";
     }
 
@@ -28,10 +28,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String checkLogin(@ModelAttribute(name="customer") Customer customer, Model model) {
+    public String checkLogin(@ModelAttribute(name="customer") User user, Model model) {
 
-        String email = customer.getEmail();
-        String password = customer.getPassword();
+        String email = user.getEmail();
+        String password = user.getPassword();
 
         boolean isLoginValid = userService.validLogin(email, password);
 
@@ -45,26 +45,26 @@ public class UserController {
     @GetMapping(value = "/register")
     public String register(Model model){
 //        model.addAttribute("register", customerFactory.getUser()); = USING ABSTRACT
-        model.addAttribute("customer", new Customer());
-//        model.addAttribute("customer", new Customer.CustomerBuilder().build());
+        model.addAttribute("customer", new User());
+//        model.addAttribute("customer", new User.UserBuilder().build());
         return "register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String createUser(@ModelAttribute Customer customer, Model model) {
+    public String createUser(@ModelAttribute User user, Model model) {
 //
-//        customer = new Customer.CustomerBuilder()
-//                .setPassword(customer.getPassword())
-//                .setEmail(customer.getEmail())
-//                .setContact(customer.getContact())
-//                .setFirstName(customer.getFirst_name())
-//                .setLastName(customer.getLast_name()).build();
-        String email = customer.getEmail();
-        boolean isRegisterValid = userService.validRegister(customer);
+//        user = new User.UserBuilder()
+//                .setPassword(user.getPassword())
+//                .setEmail(user.getEmail())
+//                .setContact(user.getContact())
+//                .setFirstName(user.getFirst_name())
+//                .setLastName(user.getLast_name()).build();
+        String email = user.getEmail();
+        boolean isRegisterValid = userService.validRegister(user);
 
         if(userService.findByEmail(email) == null) {
             if (isRegisterValid) {
-                userService.update(customer);
+                userService.update(user);
                 return "redirect:/flights";
             }
             model.addAttribute("isRegisterValid", "msg");

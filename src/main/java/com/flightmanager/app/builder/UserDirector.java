@@ -1,6 +1,6 @@
 package com.flightmanager.app.builder;
 
-import com.flightmanager.app.model.Customer;
+import com.flightmanager.app.model.User;
 
 /**
  * @author: John Long
@@ -9,18 +9,19 @@ import com.flightmanager.app.model.Customer;
 
 public class UserDirector {
     private UserBuilder userBuilder;
-
-    public void setUserBuilder(UserBuilder ub){
-        userBuilder = ub;
+    public UserDirector(UserBuilder userBuilder){
+        this.userBuilder = userBuilder;
     }
 
-    public Customer getCustomer(){
-        return userBuilder.getCustomer();
+    public User constructUser(Long id, String firstName, String lastName,
+                              String email, String password, String contact) {
+        this.userBuilder.buildUserID(id);
+        this.userBuilder.buildFirstName(firstName);
+        this.userBuilder.buildLastName(lastName);
+        this.userBuilder.buildEmail(email);
+        this.userBuilder.buildPassword(password);
+        this.userBuilder.buildContact(contact);
+        this.userBuilder.buildAccountType();
+        return this.userBuilder.getUser();
     }
-
-    public void constructCustomerUser(){
-        userBuilder.createNewCustomerUser();
-//        userBuilder.buildCustomerID(int id)
-    }
-
 }

@@ -1,17 +1,17 @@
 package com.flightmanager.app.dao;
 
-import com.flightmanager.app.model.Customer;
+import com.flightmanager.app.model.User;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface UserDAO {
 
-    Customer save(Customer flight);
-    Customer update(Customer flight);
-    Optional<Customer> findById(long id);
-    List<Customer> findAll();
+    User save(User flight);
+    User update(User flight);
+    Optional<User> findById(long id);
+    List<User> findAll();
     void deleteById(long id);
 
-    Customer findByEmail(String email);
+    User findByEmail(String email);
 }

@@ -1,6 +1,6 @@
 package com.flightmanager.app.repository;
 
-import com.flightmanager.app.model.Customer;
+import com.flightmanager.app.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
  * @create: 24-Feb-2020
  **/
 
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
-    public Customer findByEmail(String email);
+public interface CustomerRepository extends CrudRepository<User, Long> {
+    public User findByEmail(String email);
 }
