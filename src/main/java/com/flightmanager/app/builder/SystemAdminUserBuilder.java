@@ -16,32 +16,32 @@ public class SystemAdminUserBuilder implements UserBuilder {
 
     @Override
     public void buildUserID(Long id) {
-
+        user.setUser_ID(id);
     }
 
     @Override
     public void buildFirstName(String firstName) {
-
+        user.setFirst_name(firstName);
     }
 
     @Override
     public void buildLastName(String lastName) {
-
+        user.setLast_name(lastName);
     }
 
     @Override
     public void buildPassword(String password) {
-
+        user.setPassword(password);
     }
 
     @Override
     public void buildEmail(String email) {
-
+        user.setEmail(email);
     }
 
     @Override
     public void buildContact(String contact) {
-
+        user.setContact(contact);
     }
 
     @Override
