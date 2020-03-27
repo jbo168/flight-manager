@@ -4,12 +4,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AuthenticationObject {
+public class AuthenticationAndLogoutContext {
 
     private String username;
     private boolean status;
 
-    public AuthenticationObject(String username, boolean status){
+    public AuthenticationAndLogoutContext(String username, boolean status){
         this.username = username;
         this.status = status;
     }
