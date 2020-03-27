@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService {
     public void initiatePreRequest(String username, boolean status) {
         Interceptor interceptor = new ConcreteInterceptor();
         Dispatcher dispatcher = new Dispatcher();
-        AuthenticationObject context = new AuthenticationObject(username, status);
+        AuthenticationAndLogoutContext context = new AuthenticationAndLogoutContext(username, status);
 
         dispatcher.register(interceptor);
         dispatcher.preMarshallRequest(context);
@@ -95,7 +95,7 @@ public class UserServiceImpl implements UserService {
     public void initiatePostRequest(String username, boolean status) {
         Interceptor interceptor = new ConcreteInterceptor();
         Dispatcher dispatcher = new Dispatcher();
-        AuthenticationObject context = new AuthenticationObject(username, status);
+        AuthenticationAndLogoutContext context = new AuthenticationAndLogoutContext(username, status);
 
         dispatcher.register(interceptor);
         dispatcher.postMarshallRequest(context);
@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
     public void initiatePreReply(String username, boolean status) {
         Interceptor interceptor = new ConcreteInterceptor();
         Dispatcher dispatcher = new Dispatcher();
-        AuthenticationObject context = new AuthenticationObject(username, status);
+        AuthenticationAndLogoutContext context = new AuthenticationAndLogoutContext(username, status);
 
         dispatcher.register(interceptor);
         dispatcher.preMarshallReply(context);
@@ -115,7 +115,7 @@ public class UserServiceImpl implements UserService {
     public void initiatePostReply(String username, boolean status) {
         Interceptor interceptor = new ConcreteInterceptor();
         Dispatcher dispatcher = new Dispatcher();
-        AuthenticationObject context = new AuthenticationObject(username, status);
+        AuthenticationAndLogoutContext context = new AuthenticationAndLogoutContext(username, status);
 
         dispatcher.register(interceptor);
         dispatcher.postMarshallReply(context);
