@@ -4,5 +4,5 @@ import com.flightmanager.app.builder.UserBuilder;
 
 public abstract class AbstractFactory {
 
-    public abstract UserBuilder getUser();
+    public abstract UserBuilder getUser(String userType);
 }

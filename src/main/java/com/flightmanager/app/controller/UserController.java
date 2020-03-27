@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class UserController {
 
-    AbstractFactory factory = ConcreteFactory.getFactory("Customer");
+    AbstractFactory factory = ConcreteFactory.getFactory(true);
 
     @Autowired
     private UserService userService;
@@ -45,7 +45,6 @@ public class UserController {
 
     @GetMapping(value = "/register")
     public String register(Model model){
-//        model.addAttribute("register", customerFactory.getUser()); = USING ABSTRACT
         model.addAttribute("user", new User());
         return "register";
     }
@@ -53,7 +52,7 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String createUser(@ModelAttribute User user, Model model) {
 
-        CustomerUserBuilder customer = (CustomerUserBuilder) factory.getUser();
+        CustomerUserBuilder customer = (CustomerUserBuilder) factory.getUser("customer");
         customer.buildFirstName(user.getFirst_name());
         customer.buildLastName(user.getLast_name());
         customer.buildEmail(user.getEmail());
