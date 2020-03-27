@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String checkLogin(@ModelAttribute(name="customer") User user, Model model) {
+    public String checkLogin(@ModelAttribute(name="user") User user, Model model) {
 
         String email = user.getEmail();
         String password = user.getPassword();
@@ -45,20 +45,13 @@ public class UserController {
     @GetMapping(value = "/register")
     public String register(Model model){
 //        model.addAttribute("register", customerFactory.getUser()); = USING ABSTRACT
-        model.addAttribute("customer", new User());
-//        model.addAttribute("customer", new User.UserBuilder().build());
+        model.addAttribute("user", new User());
         return "register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String createUser(@ModelAttribute User user, Model model) {
-//
-//        user = new User.UserBuilder()
-//                .setPassword(user.getPassword())
-//                .setEmail(user.getEmail())
-//                .setContact(user.getContact())
-//                .setFirstName(user.getFirst_name())
-//                .setLastName(user.getLast_name()).build();
+
         String email = user.getEmail();
         boolean isRegisterValid = userService.validRegister(user);
 
