@@ -3,6 +3,7 @@ package com.flightmanager.app.controller;
 import com.flightmanager.app.abstractFactory.AbstractFactory;
 import com.flightmanager.app.abstractFactory.ConcreteFactory;
 import com.flightmanager.app.builder.CustomerUserBuilder;
+import com.flightmanager.app.builder.UserBuilder;
 import com.flightmanager.app.model.User;
 import com.flightmanager.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class UserController {
 
-    AbstractFactory factory = ConcreteFactory.getFactory(true);
+    AbstractFactory userFactory = ConcreteFactory.getFactory();
 
     @Autowired
     private UserService userService;
@@ -52,7 +53,7 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String createUser(@ModelAttribute User user, Model model) {
 
-        CustomerUserBuilder customer = (CustomerUserBuilder) factory.getUser("customer");
+        UserBuilder customer = userFactory.getUser("customer");
         customer.buildFirstName(user.getFirst_name());
         customer.buildLastName(user.getLast_name());
         customer.buildEmail(user.getEmail());
