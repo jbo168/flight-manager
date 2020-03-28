@@ -2,7 +2,6 @@ package com.flightmanager.app.model;
 
 
 import javax.persistence.*;
-import java.util.List;
 
 
 /// Rectangle
@@ -16,7 +15,7 @@ public class Booking{
 //    @Column(name = "booking_ID")
     private int booking_ID;
     private int flight_ID;
-    private int customer_ID;
+    private int user_ID;
     public String comment;
     public int score;
 
@@ -43,12 +42,12 @@ public class Booking{
         this.flight_ID = flight_ID;
     }
 
-    public int getCustomer_ID() {
-        return customer_ID;
+    public int getUser_ID() {
+        return user_ID;
     }
 
-    public void setCustomer_ID(int customer_ID) {
-        this.customer_ID = customer_ID;
+    public void setUser_ID(int customer_ID) {
+        this.user_ID = customer_ID;
     }
 
 
