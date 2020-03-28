@@ -51,23 +51,23 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String createUser(@ModelAttribute User user, Model model) {
+    public String createUser(@ModelAttribute User registeringUser, Model model) {
 
         UserBuilder customer = userFactory.getUser();
-        customer.buildFirstName(user.getFirst_name());
-        customer.buildLastName(user.getLast_name());
-        customer.buildEmail(user.getEmail());
-        customer.buildContact(user.getContact());
-        customer.buildPassword(user.getPassword());
-        User user2 = customer.getUser();
+        customer.buildFirstName(registeringUser.getFirst_name());
+        customer.buildLastName(registeringUser.getLast_name());
+        customer.buildEmail(registeringUser.getEmail());
+        customer.buildContact(registeringUser.getContact());
+        customer.buildPassword(registeringUser.getPassword());
+        User user = customer.getUser();
 
 
-        String email = user2.getEmail();
-        boolean isRegisterValid = userService.validRegister(user2);
+        String email = user.getEmail();
+        boolean isRegisterValid = userService.validRegister(user);
 
         if(userService.findByEmail(email) == null) {
             if (isRegisterValid) {
-                userService.update(user2);
+                userService.update(user);
                 return "redirect:/flights";
             }
             model.addAttribute("isRegisterValid", "msg");

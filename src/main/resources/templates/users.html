@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
+          rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <title>Users</title>
+</head>
+
+<body>
+<div class="container">
+    <div th:id="${not #lists.isEmpty(users)}">
+        <div class="row">
+            <div class="col-sm-2">
+                <h2>User List:</h2><br>
+            </div>
+            <div class="col-sm-2"><br>
+                <button class="btn-danger" th:onclick="window.location.href = '/logout'">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Contact</th>
+                <th>Account Type</th>
+                <th>View</th>
+                <th>Update</th>
+                <th>Remove</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.user_ID}"></td>
+                <td th:text="${user.first_name}"></td>
+                <td th:text="${user.last_name}"></td>
+                <td th:text="${user.email}"></td>
+                <td style="font-size: 0.5em" th:text="${user.password}"></td>
+                <td th:text="${user.contact}"></td>
+                <td th:text="${user.account_type}"></td>
+                <td><a th:href="${'/user/' + user.user_ID}">View Details</a></td>
+                <td><a th:href="${'user/update/' + user.user_ID}">Update Details</a></td>
+                <td><a th:href="${'user/remove/' + user.user_ID}">Remove</a></td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-md-4">
+                <a th:href="${'user/add'}"> New User</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

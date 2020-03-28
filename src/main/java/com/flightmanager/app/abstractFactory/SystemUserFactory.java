@@ -8,10 +8,10 @@ public class SystemUserFactory extends AbstractFactory{
 
     @Override
     public UserBuilder getSystemUser(String userType) {
-        if(userType.equals("Admin")){
+        if(userType.equalsIgnoreCase("Admin")){
             return new SystemAdminUserBuilder();
         }
-        else if(userType.equals("Manager")){
+        else if(userType.equalsIgnoreCase("Manager")){
             return new SystemManagerUserBuilder();
         }
         return null;

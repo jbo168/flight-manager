@@ -9,8 +9,8 @@ import java.util.Optional;
 @Component
 public interface UserService {
 
-    void save(User flight);
-    User update(User flight);
+    void save(User user);
+    User update(User user);
     Optional<User> findById(long id);
     List<User> findAll();
     boolean validLogin(String email, String password);
