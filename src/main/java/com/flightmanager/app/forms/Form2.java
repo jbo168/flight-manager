@@ -13,7 +13,7 @@ public class Form2 implements FormHandler{
 
     @Override
     public void nextInChain(FormHandler handler) {
-
+        this.nextForm = handler;
     }
 
     @Override
