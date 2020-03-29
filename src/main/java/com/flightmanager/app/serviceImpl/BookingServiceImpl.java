@@ -10,6 +10,7 @@ import com.flightmanager.app.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -63,7 +64,8 @@ public class BookingServiceImpl implements BookingService {
     }
 
     public void executeChain(){
-        handlers.get(0).process(new BookingData());
+        BookingData data = new BookingData();
+        handlers.get(0).process(data);
     }
 
 }
