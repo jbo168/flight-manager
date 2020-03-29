@@ -31,59 +31,31 @@ public class Form2 implements FormHandler{
         return nextForm == null || nextForm.process(bookingData);
     }
 
-    public int getUserID() {
-        return userID;
-    }
-
     public void setUserID(int userID) {
         this.userID = userID;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
     }
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
 
-    public String getAddressLine1() {
-        return addressLine1;
-    }
-
     public void setAddressLine1(String addressLine1) {
         this.addressLine1 = addressLine1;
-    }
-
-    public String getAddressLine2() {
-        return addressLine2;
     }
 
     public void setAddressLine2(String addressLine2) {
         this.addressLine2 = addressLine2;
     }
 
-    public String getAddressCity() {
-        return addressCity;
-    }
-
     public void setAddressCity(String addressCity) {
         this.addressCity = addressCity;
-    }
-
-    public String getAddressCountry() {
-        return addressCountry;
     }
 
     public void setAddressCountry(String addressCountry) {
         this.addressCountry = addressCountry;
     }
 
-    public String getAddressPostCode() {
-        return addressPostcode;
-    }
-
     public void setAddressPostCode(String addressPostCode) {
-        this.addressPostcode = addressPostCode;
+        this.addressPostCode = addressPostCode;
     }
 }
