@@ -47,7 +47,7 @@
                 <td><a th:href="${'/flight/' + flight.flightId}">View Details</a></td>
                 <td><a th:href="${'flight/update/' + flight.flightId}">Update Details</a></td>
                 <td><a th:href="${'flight/remove/' + flight.flightId}">Remove</a></td>
-                <td><button class="btn-primary">Book</button></td>
+                <td><a class="btn btn-primary" th:href="${'/bookingForm1/' + flight.getFlightId()}"> Book</a></td>
             </tr>
         </table>
         <div class="row">

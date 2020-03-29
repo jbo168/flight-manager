@@ -3,8 +3,10 @@ package com.flightmanager.app.model;
 
 public class BookingData {
     //luggage, address, extra request, class
-    private int luggage;
+    private int flight_id;
     private int userID;
+
+    private int luggage;
     private String userEmail;
     private String address;
     private String ticketClass;
@@ -56,5 +58,13 @@ public class BookingData {
 
     public void setExtraRequest(String extraRequest) {
         this.extraRequest = extraRequest;
+    }
+
+    public int getFlight_id() {
+        return flight_id;
+    }
+
+    public void setFlight_id(int flight_id) {
+        this.flight_id = flight_id;
     }
 }

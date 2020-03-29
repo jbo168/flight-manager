@@ -19,6 +19,7 @@ public class Booking{
     public String comment;
     public int score;
 
+
     public Booking(Booking booking){
         super();
     }

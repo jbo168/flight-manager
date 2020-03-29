@@ -10,7 +10,7 @@ public class Form2 implements FormHandler{
     private String addressLine2;
     private String addressCity;
     private String addressCountry;
-    private String addressPostCode;
+    private String addressPostcode;
 
     @Autowired
     private FormHandler nextForm;
@@ -26,7 +26,7 @@ public class Form2 implements FormHandler{
         bookingData.setUserEmail(userEmail);
         bookingData.setAddress(addressLine1 + "," + addressLine2 + "," +
                                 addressCity + "," + addressCountry + "," +
-                                 addressPostCode);
+                                 addressPostcode);
 
         return nextForm == null || nextForm.process(bookingData);
     }
@@ -80,10 +80,10 @@ public class Form2 implements FormHandler{
     }
 
     public String getAddressPostCode() {
-        return addressPostCode;
+        return addressPostcode;
     }
 
     public void setAddressPostCode(String addressPostCode) {
-        this.addressPostCode = addressPostCode;
+        this.addressPostcode = addressPostCode;
     }
 }
