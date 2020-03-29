@@ -46,7 +46,7 @@ public class SystemAdminUserBuilder implements UserBuilder {
 
     @Override
     public void buildAccountType() {
-        user.setAccount_type("System Admin");
+        user.setAccount_type("Admin");
     }
 
     @Override

@@ -27,8 +27,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User update(User user) {
-        user.setPassword(config.passEncoder().encode(user.getPassword()));
-        return userDAO.save(user);
+        String passwordEncoded = config.passEncoder().encode(user.getPassword());
+        String password = user.getPassword();
+
+        if(config.passEncoder().matches(password,passwordEncoded) && user.getPassword().length() < 30) {
+            user.setPassword(passwordEncoded);
+            return userDAO.save(user);
+        }
+        else{
+            return userDAO.save(user);
+        }
     }
 
     @Override
