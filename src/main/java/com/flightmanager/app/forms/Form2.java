@@ -18,7 +18,9 @@ public class Form2 implements FormHandler{
 
     @Override
     public boolean process(BookingData bookingData) {
-
+        bookingData.setUserID(userID);
+        bookingData.setUserEmail(userEmail);
+        bookingData.setAddress(address);
         return nextForm == null || nextForm.process(bookingData);
     }
 

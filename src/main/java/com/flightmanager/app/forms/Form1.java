@@ -20,7 +20,8 @@ public class Form1 implements FormHandler{
 
     @Override
     public boolean process(BookingData bookingData) {
-
+        bookingData.setLuggage(luggage);
+        bookingData.setTicketClass(ticketClass);
         return formHandler == null || formHandler.process(bookingData);
     }
 
