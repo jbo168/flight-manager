@@ -9,6 +9,7 @@ public class Form1 implements FormHandler{
 
     private int luggage;
     private String ticketClass;
+    private String extraRequest;
 
     @Autowired
     private FormHandler formHandler;
@@ -22,22 +23,19 @@ public class Form1 implements FormHandler{
     public boolean process(BookingData bookingData) {
         bookingData.setLuggage(luggage);
         bookingData.setTicketClass(ticketClass);
+        bookingData.setExtraRequest(extraRequest);
         return formHandler == null || formHandler.process(bookingData);
-    }
-
-    public int getLuggage() {
-        return luggage;
     }
 
     public void setLuggage(int luggage) {
         this.luggage = luggage;
     }
 
-    public String getTicketClass() {
-        return ticketClass;
-    }
-
     public void setTicketClass(String ticketClass) {
         this.ticketClass = ticketClass;
+    }
+
+    public void setExtraRequest(String extraRequest) {
+        this.extraRequest = extraRequest;
     }
 }
