@@ -3,6 +3,10 @@ package com.flightmanager.app.interceptor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author: Darius Gaurilka
+ **/
+
 public class Dispatcher implements Interceptor{
     List<Interceptor> interceptors;
 

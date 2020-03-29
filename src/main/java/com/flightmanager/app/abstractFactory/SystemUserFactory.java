@@ -4,6 +4,10 @@ import com.flightmanager.app.builder.SystemAdminUserBuilder;
 import com.flightmanager.app.builder.SystemManagerUserBuilder;
 import com.flightmanager.app.builder.UserBuilder;
 
+/**
+ * @author: Darius Gaurilka
+ **/
+
 public class SystemUserFactory extends AbstractFactory{
 
     @Override

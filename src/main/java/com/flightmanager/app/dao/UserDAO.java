@@ -5,6 +5,10 @@ import com.flightmanager.app.model.User;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author: Darius Gaurilka
+ **/
+
 public interface UserDAO {
 
     User save(User flight);

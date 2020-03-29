@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author: Darius Gaurilka
+ **/
+
 @Component
 public class FlightDAOImpl implements FlightDAO {
 

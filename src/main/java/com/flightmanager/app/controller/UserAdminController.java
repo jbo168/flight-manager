@@ -10,6 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author: Darius Gaurilka
+ **/
+
 @Controller
 public class UserAdminController {
 

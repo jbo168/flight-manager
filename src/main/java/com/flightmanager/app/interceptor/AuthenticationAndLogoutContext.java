@@ -4,6 +4,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author: Darius Gaurilka
+ **/
+
 public class AuthenticationAndLogoutContext {
 
     private String username;

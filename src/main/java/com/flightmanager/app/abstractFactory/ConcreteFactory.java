@@ -1,5 +1,9 @@
 package com.flightmanager.app.abstractFactory;
 
+/**
+ * @author: Darius Gaurilka
+ * **/
+
 public class ConcreteFactory {
 
     public static AbstractFactory getFactory(String accType) {

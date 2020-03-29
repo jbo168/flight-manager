@@ -5,6 +5,10 @@ import com.flightmanager.app.model.Flight;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author: Darius Gaurilka
+ **/
+
 public interface FlightDAO {
 
     void save(Flight flight);

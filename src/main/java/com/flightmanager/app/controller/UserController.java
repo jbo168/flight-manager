@@ -2,7 +2,6 @@ package com.flightmanager.app.controller;
 
 import com.flightmanager.app.abstractFactory.AbstractFactory;
 import com.flightmanager.app.abstractFactory.ConcreteFactory;
-import com.flightmanager.app.builder.CustomerUserBuilder;
 import com.flightmanager.app.builder.UserBuilder;
 import com.flightmanager.app.model.User;
 import com.flightmanager.app.service.UserService;
@@ -10,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+/**
+ * @author: Darius Gaurilka
+ **/
 
 @Controller
 public class UserController {

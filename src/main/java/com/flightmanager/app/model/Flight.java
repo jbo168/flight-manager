@@ -9,6 +9,10 @@ import com.flightmanager.app.visitor.Visitor;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * @author: Darius Gaurilka, John Long
+ **/
+
 //Flight Info
 
 @Entity

@@ -11,6 +11,10 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author: Darius Gaurilka
+ **/
+
 @Service
 public class UserSecurityService implements UserDetailsService {
 

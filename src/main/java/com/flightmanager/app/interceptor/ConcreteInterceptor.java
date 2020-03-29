@@ -3,6 +3,10 @@ package com.flightmanager.app.interceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author: Darius Gaurilka
+ **/
+
 public class ConcreteInterceptor implements Interceptor{
 
     Logger logger = LoggerFactory.getLogger(ConcreteInterceptor.class);

@@ -8,6 +8,10 @@ import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
 
+/**
+ * @author: Darius Gaurilka, John Long
+ **/
+
 @Entity
 @Table(name = "user", schema = "flightdb")
 public class User implements UserDetails {

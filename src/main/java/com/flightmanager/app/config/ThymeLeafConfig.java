@@ -7,6 +7,10 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
+/**
+ * @author: Darius Gaurilka
+ **/
+
 @Configuration
 public class ThymeLeafConfig {
 
