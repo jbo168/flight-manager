@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class Form2 implements FormHandler{
     private int userID;
     private String userEmail;
-    private String address;
+    private String addressLine1;
+    private String addressLine2;
+    private String addressCity;
+    private String addressCountry;
+    private String addressPostCode;
 
     @Autowired
     private FormHandler nextForm;
@@ -20,7 +24,10 @@ public class Form2 implements FormHandler{
     public boolean process(BookingData bookingData) {
         bookingData.setUserID(userID);
         bookingData.setUserEmail(userEmail);
-        bookingData.setAddress(address);
+        bookingData.setAddress(addressLine1 + "," + addressLine2 + "," +
+                                addressCity + "," + addressCountry + "," +
+                                 addressPostCode);
+
         return nextForm == null || nextForm.process(bookingData);
     }
 
@@ -40,11 +47,43 @@ public class Form2 implements FormHandler{
         this.userEmail = userEmail;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAddressLine1() {
+        return addressLine1;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
+    }
+
+    public String getAddressLine2() {
+        return addressLine2;
+    }
+
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
+    }
+
+    public String getAddressCity() {
+        return addressCity;
+    }
+
+    public void setAddressCity(String addressCity) {
+        this.addressCity = addressCity;
+    }
+
+    public String getAddressCountry() {
+        return addressCountry;
+    }
+
+    public void setAddressCountry(String addressCountry) {
+        this.addressCountry = addressCountry;
+    }
+
+    public String getAddressPostCode() {
+        return addressPostCode;
+    }
+
+    public void setAddressPostCode(String addressPostCode) {
+        this.addressPostCode = addressPostCode;
     }
 }
