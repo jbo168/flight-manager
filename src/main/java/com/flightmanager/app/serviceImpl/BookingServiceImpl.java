@@ -30,6 +30,7 @@ public class BookingServiceImpl implements BookingService {
     public Booking update(Booking booking){ return bookingDAO.update(booking); }
 
     public ArrayList<Flight> findAll(int id) {
+
         ArrayList<Booking> bookings = bookingDAO.findAll();
         ArrayList<Integer> flightIds = new ArrayList<>();
 
@@ -56,6 +57,7 @@ public class BookingServiceImpl implements BookingService {
         return bookingIds;
     }
 
+    @Override
     public void addHandler(FormHandler newHandler){
             handlers.add(newHandler);
 
@@ -63,6 +65,7 @@ public class BookingServiceImpl implements BookingService {
                 handlers.get(handlers.size()-2).nextInChain(newHandler);
     }
 
+    @Override
     public void executeChain(){
         BookingData data = new BookingData();
         handlers.get(0).process(data);

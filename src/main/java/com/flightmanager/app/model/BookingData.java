@@ -3,16 +3,16 @@ package com.flightmanager.app.model;
 
 public class BookingData {
     //luggage, address, extra request, class
-    private boolean luggage;
+    private int luggage;
     private String address;
     private String ticketClass;
     private String extraRequest;
 
-    public boolean isLuggage() {
+    public int isLuggage() {
         return luggage;
     }
 
-    public void setLuggage(boolean luggage) {
+    public void setLuggage(int luggage) {
         this.luggage = luggage;
     }
 

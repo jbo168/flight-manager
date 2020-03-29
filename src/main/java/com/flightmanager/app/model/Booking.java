@@ -4,7 +4,7 @@ package com.flightmanager.app.model;
 import javax.persistence.*;
 
 
-/// Rectangle
+/// Adaptee
 
 
 @Entity

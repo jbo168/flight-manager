@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class Form1 implements FormHandler{
 
+    private int luggage;
+    private String ticketClass;
+
     @Autowired
     private FormHandler formHandler;
 
@@ -17,9 +20,23 @@ public class Form1 implements FormHandler{
 
     @Override
     public boolean process(BookingData bookingData) {
-        bookingData.setTicketClass();
-//        bookingData.setLuggage(false);
-//        bookingData.setExtraRequest();
+
         return formHandler == null || formHandler.process(bookingData);
+    }
+
+    public int getLuggage() {
+        return luggage;
+    }
+
+    public void setLuggage(int luggage) {
+        this.luggage = luggage;
+    }
+
+    public String getTicketClass() {
+        return ticketClass;
+    }
+
+    public void setTicketClass(String ticketClass) {
+        this.ticketClass = ticketClass;
     }
 }

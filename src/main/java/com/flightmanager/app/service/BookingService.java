@@ -1,6 +1,7 @@
 package com.flightmanager.app.service;
 
 import com.flightmanager.app.adaptor.BookingAdaptor;
+import com.flightmanager.app.forms.FormHandler;
 import com.flightmanager.app.model.Booking;
 import com.flightmanager.app.model.Flight;
 
@@ -15,4 +16,7 @@ public interface BookingService {
     ArrayList<Booking> returnBookings(int i);
     Optional<Booking> findByID(int i);
 
+    void addHandler(FormHandler newHandler);
+
+    void executeChain();
 }
