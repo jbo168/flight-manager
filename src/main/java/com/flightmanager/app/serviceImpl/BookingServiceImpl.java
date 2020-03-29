@@ -1,7 +1,9 @@
 package com.flightmanager.app.serviceImpl;
 
 import com.flightmanager.app.dao.BookingDAO;
+import com.flightmanager.app.forms.FormHandler;
 import com.flightmanager.app.model.Booking;
+import com.flightmanager.app.model.BookingData;
 import com.flightmanager.app.model.Flight;
 import com.flightmanager.app.repository.FlightRepository;
 import com.flightmanager.app.service.BookingService;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,6 +20,8 @@ public class BookingServiceImpl implements BookingService {
     FlightRepository flightRepository;
     @Autowired
     BookingDAO bookingDAO;
+
+    List<FormHandler> handlers = new ArrayList<>();
 
     @Override
     public Optional<Booking> findByID(int i) {  return bookingDAO.findById(i); }
@@ -50,5 +55,15 @@ public class BookingServiceImpl implements BookingService {
         return bookingIds;
     }
 
+    public void addHandler(FormHandler newHandler){
+            handlers.add(newHandler);
+
+            if(handlers.size() > 1)
+                handlers.get(handlers.size()-2).nextInChain(newHandler);
+    }
+
+    public void executeChain(){
+        handlers.get(0).process(new BookingData());
+    }
 
 }
