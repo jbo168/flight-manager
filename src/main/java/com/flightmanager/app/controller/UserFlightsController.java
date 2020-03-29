@@ -5,6 +5,7 @@ import com.flightmanager.app.adaptor.BookingAdaptor;
 import com.flightmanager.app.adaptor.Review;
 import com.flightmanager.app.adaptor.ReviewService;
 import com.flightmanager.app.model.Booking;
+import com.flightmanager.app.model.Flight;
 import com.flightmanager.app.model.User;
 import com.flightmanager.app.service.BookingService;
 import com.flightmanager.app.service.UserService;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.awt.print.Book;
+import java.util.ArrayList;
 
 
 @Controller
@@ -35,10 +37,15 @@ public class UserFlightsController {
             String currentPrincipalName = authentication.getName();
             User currentUser = checkUserService.findByEmail(currentPrincipalName);
 
+            try {
+                ArrayList<Flight> myFlights = checkBookingService.findAll((int) currentUser.getUser_ID());
+                model.addAttribute("usersCurrentFlights", checkBookingService.findAll((int) currentUser.getUser_ID()));
+            }catch (Exception e){
+                e.printStackTrace();
+                return "userFlightsNoBookings";
+            }
+            return "userFlights";
 
-            model.addAttribute("usersCurrentFlights", checkBookingService.findAll((int) currentUser.getUser_ID()));
-//        model.addAttribute("usersCurrentBooking" , checkFlightsService.returnBookings(2));
-        return "userFlights";
         }
 
         @GetMapping(value = "/addReview/{id}")
@@ -49,8 +56,7 @@ public class UserFlightsController {
 
             ReviewService reviewAdaptor = new BookingAdaptor(newBooking);
 
-//            model.addAttribute("booking", checkBookingService.findByID(id));
-            model.addAttribute("reviewAdapter" , reviewAdaptor);  //Push a Review On
+            model.addAttribute("reviewAdapter" , reviewAdaptor);  //Push a Review Adaptor On Client
             return "addReview";
         }
 
