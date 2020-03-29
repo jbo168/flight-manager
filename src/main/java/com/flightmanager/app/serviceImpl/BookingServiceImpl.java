@@ -60,7 +60,6 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void addHandler(FormHandler newHandler){
             handlers.add(newHandler);
-
             if(handlers.size() > 1)
                 handlers.get(handlers.size()-2).nextInChain(newHandler);
     }

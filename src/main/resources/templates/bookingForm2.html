@@ -39,13 +39,30 @@
                     <div class="card-body">
                         <br>
                         <div class="form-row">
-                            <label class="col-2 form-check-label">Email address of recipient : </label>
-                            <input th:field="*{userEmail}" type="text" class="text-area form-control-lg form-inline col-8" />
-                        </div>
-                        <br><br>
+                            <label class="col-4 form-check-label">Email address of recipient : </label>
+                            <input th:field="*{userEmail}" type="text" class="text-area form-control-lg form-inline col-4" />
+                        </div><br>
+
+                        <h5>Blling Address : </h5><br>
                         <div class="form-row">
-                            <label class="col-2 form-check-label">Billing address of recipient : </label>
-                            <input th:field="*{address}" type="text" class="from-control form-inline  col-1" />
+                            <label class="col-2 form-check-label">Line 1 : </label>
+                             <input th:field="*{addressLine1}" type="text" class="text-area form-control-lg form-inline col-8" />
+                        </div><br>
+                        <div class="form-row">
+                            <label class="col-2 form-check-label">Line 2 :</label>
+                             <input th:field="*{addressLine2}" type="text" class="text-area form-control-lg form-inline col-8" />
+                        </div><br>
+                        <div class="form-row">
+                             <label class="col-2 form-check-label">City : </label>
+                             <input th:field="*{addressCity}" type="text" class="text-area form-control-lg form-inline col-8" />
+                        </div><br>
+                        <div class="form-row">
+                            <label class="col-2 form-check-label">Country : </label>
+                             <input th:field="*{addressCountry}" type="text" class="text-area form-control-lg form-inline col-8" />
+                        </div><br>
+                        <div class="form-row">
+                            <label class="col-2 form-check-label">Postcode : </label>
+                             <input th:field="*{addressPostCode}" type="text" class="text-area form-control-lg form-inline col-8" />
                         </div>
                     </div>
                     <div class="card-footer">

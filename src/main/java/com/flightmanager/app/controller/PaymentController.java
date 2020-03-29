@@ -42,8 +42,6 @@ public class PaymentController {
     public String processPayment(Card card){
         if (!card.validate()) return "noStripe";
 
-
-
         return "redirect:/userFlights";
     }
 
