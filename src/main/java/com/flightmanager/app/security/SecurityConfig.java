@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @EnableWebSecurity
@@ -36,6 +37,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
+    public AuthenticationSuccessHandler loginSuccessHandler(){
+        return new CustomLoginHandler();
+    }
+
+    @Bean
     public LogoutSuccessHandler logoutSuccessHandler(){
         return new CustomLogoutHandler();
     }
@@ -45,9 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/login", "/register", "/resources/**", "/webjars/**").permitAll().anyRequest().authenticated().and()
-                .formLogin()
-                    .defaultSuccessUrl("/flights").permitAll().and()
+                    .antMatchers("/", "/login", "/register", "/resources/templates", "/webjars/**").permitAll().anyRequest().authenticated().and()
+                .formLogin().successHandler(loginSuccessHandler()).permitAll().and()
                 .logout().logoutSuccessHandler(logoutSuccessHandler()).permitAll();
     }
 }
