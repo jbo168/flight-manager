@@ -62,6 +62,7 @@ public class UserAdminController {
             userService.update(newUser.getUser());
             return "redirect:/user/" + newUser.getUser().getUser_ID();
         }
+        userService.update(user);
         return "redirect:/users";
     }
 
