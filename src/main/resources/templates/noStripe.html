@@ -11,12 +11,7 @@
     <!--          th:href="@{css/index.css}" rel="stylesheet"/>-->
     <title>Checkout</title>
 </head>
-<body>
-    <form class="form-horizontal">
-
-
-    </form>
-
+<body class="container">
     <form  action="@/processPayment"  th:object="${card}" th:action="@{/processPayment}" method="post">
         <div class="row card mb-2">
             <div class="card-header">

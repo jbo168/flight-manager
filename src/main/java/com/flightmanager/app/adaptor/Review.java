@@ -1,5 +1,7 @@
 package com.flightmanager.app.adaptor;
 
+//Adaptee
+
 public class Review implements ReviewService {
 
     public String comment;

@@ -50,6 +50,13 @@ public class Form1 implements FormHandler{
         this.flight_id = flight_id;
     }
 
+    public int getFlight_id() {
+        return flight_id;
+    }
+
+    public String getExtraRequest() {
+        return extraRequest;
+    }
     public void setExtraRequest(String extraRequest) {
         this.extraRequest = extraRequest;
     }

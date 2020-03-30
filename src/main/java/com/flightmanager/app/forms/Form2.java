@@ -35,27 +35,52 @@ public class Form2 implements FormHandler{
         this.userID = userID;
     }
 
+    public String getUserEmail() {
+        return this.userEmail;
+    }
+
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+
+    public String getAddressLine1() {
+        return this.addressLine1;
     }
 
     public void setAddressLine1(String addressLine1) {
         this.addressLine1 = addressLine1;
     }
 
+    public String getAddressLine2() {
+        return this.addressLine2;
+    }
+
     public void setAddressLine2(String addressLine2) {
         this.addressLine2 = addressLine2;
+    }
+
+    public String getAddressCity() {
+        return this.addressCity;
     }
 
     public void setAddressCity(String addressCity) {
         this.addressCity = addressCity;
     }
 
+    public String getAddressCountry() {
+        return this.addressCountry;
+    }
+
     public void setAddressCountry(String addressCountry) {
         this.addressCountry = addressCountry;
     }
 
+    public String getAddressPostCode() {
+        return this.addressPostcode;
+    }
+
     public void setAddressPostCode(String addressPostCode) {
-        this.addressPostCode = addressPostCode;
+        this.addressPostcode = addressPostCode;
     }
 }
