@@ -74,7 +74,6 @@ public class BookingServiceImpl implements BookingService {
 
         handlers.get(0).process(data);
 
-
         this.data = data;
         return data;
     }

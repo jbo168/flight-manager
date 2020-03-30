@@ -58,6 +58,16 @@ public class FlightController {
             flightsService.deleteById(id);
             return "redirect:/flights";
         }
+
+        /// View Flights
+        @GetMapping(value = "/viewFlights")
+        public String listUserFlights(Model model) {
+            model.addAttribute("flights", flightsService.findAll());
+            return "viewFlights";
+        }
+
+
+
 }
 
 

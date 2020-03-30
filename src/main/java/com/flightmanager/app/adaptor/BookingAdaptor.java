@@ -24,14 +24,6 @@ public class BookingAdaptor implements ReviewService,BaseBookingService {
         this.booking.setFlight_ID(flightId);
         this.booking.setUser_ID(userId);
     }
-//
-//    public BookingAdaptor(BookingData data){
-//        this.booking = data.get;
-//        this.comment = newBooking.getComment();
-//        this.score = newBooking.getScore();
-//
-//    }
-//
 
     @Override
     public String getComment() {

@@ -8,11 +8,10 @@ import javax.persistence.*;
 
 
 @Entity
-//@Table(name="booking")
+@Table(name = "booking", schema = "flightdb")
 public class Booking{
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-//    @Column(name = "booking_ID")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int booking_ID;
     private int flight_ID;
     private int user_ID;
@@ -26,7 +25,7 @@ public class Booking{
 
     public Booking() {super();}
 
-
+    @Column(name = "booking_id")
     public int getBooking_ID() {
         return booking_ID;
     }
@@ -35,6 +34,8 @@ public class Booking{
         this.booking_ID = booking_ID;
     }
 
+    @Basic
+    @Column(name = "flight_id")
     public int getFlight_ID() {
         return flight_ID;
     }
@@ -43,6 +44,8 @@ public class Booking{
         this.flight_ID = flight_ID;
     }
 
+    @Basic
+    @Column(name = "user_id")
     public int getUser_ID() {
         return user_ID;
     }
@@ -56,6 +59,8 @@ public class Booking{
         // notify observers
     }
 
+    @Basic
+    @Column(name = "score")
     public int getScore() {
         return this.score;
     }
@@ -64,6 +69,8 @@ public class Booking{
         this.score = score;
     }
 
+    @Basic
+    @Column(name = "comment")
     public String getComment() {
         return this.comment;
     }
