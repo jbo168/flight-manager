@@ -1,5 +1,7 @@
 package com.flightmanager.app.serviceImpl;
 
+import com.flightmanager.app.adaptor.BaseBookingService;
+import com.flightmanager.app.adaptor.BookingAdaptor;
 import com.flightmanager.app.dao.BookingDAO;
 import com.flightmanager.app.forms.FormHandler;
 import com.flightmanager.app.model.Booking;
@@ -67,11 +69,22 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public BookingData executeChain(){
+
         BookingData data = new BookingData();
+
         handlers.get(0).process(data);
+
 
         this.data = data;
         return data;
+    }
+
+    @Override
+    public void adaptBookingData(){
+
+        BaseBookingService dataAdapted = new BookingAdaptor(data.getFlight_id(),data.getUserID());
+        bookingDAO.save(dataAdapted.getBooking());
+
     }
 
     public BookingData getData() {

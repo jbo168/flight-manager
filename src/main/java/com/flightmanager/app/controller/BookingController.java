@@ -108,6 +108,8 @@ public class BookingController {
     public String processPayment(Card card){
         if (!card.validate()) return "noStripe";
 
+        checkBookingService.adaptBookingData();
+
         return "redirect:/userFlights";
     }
 

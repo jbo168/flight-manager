@@ -18,4 +18,5 @@ public interface BookingService {
     void addHandler(FormHandler newHandler);
 
     BookingData executeChain();
+    void adaptBookingData();
 }

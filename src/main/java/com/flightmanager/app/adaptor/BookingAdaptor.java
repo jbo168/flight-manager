@@ -7,7 +7,7 @@ import com.flightmanager.app.service.BookingService;
 
 //Pluggable Adaptor Option 1 from slides
 
-public class BookingAdaptor implements ReviewService {
+public class BookingAdaptor implements ReviewService,BaseBookingService {
 
     public Booking booking;
     public String comment;
@@ -17,6 +17,11 @@ public class BookingAdaptor implements ReviewService {
         this.booking = newBooking;
         this.comment = newBooking.getComment();
         this.score = newBooking.getScore();
+    }
+
+    public BookingAdaptor(int flightId,int userId){
+        this.booking.setFlight_ID(flightId);
+        this.booking.setUser_ID(userId);
     }
 //
 //    public BookingAdaptor(BookingData data){
@@ -45,6 +50,24 @@ public class BookingAdaptor implements ReviewService {
     @Override
     public void setScore(int score) {
         booking.setScore(score);
+    }
+
+
+    //Booking Data
+
+
+    public Booking getBooking(){
+        return this.booking;
+    }
+
+    @Override
+    public void setFlightId(int flightId) {
+        booking.setFlight_ID(flightId);
+    }
+
+    @Override
+    public void setUserId(int userId) {
+        booking.setUser_ID(userId);
     }
 }
 
