@@ -20,6 +20,7 @@ public class BookingAdaptor implements ReviewService,BaseBookingService {
     }
 
     public BookingAdaptor(int flightId,int userId){
+        this.booking = new Booking();
         this.booking.setFlight_ID(flightId);
         this.booking.setUser_ID(userId);
     }

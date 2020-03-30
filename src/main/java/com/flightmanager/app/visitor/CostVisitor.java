@@ -8,7 +8,7 @@ public class CostVisitor implements Visitor {
     @Override
     public int visitServiceCharge(Flight flight) {
         int cost = flight.getCost();
-        cost = (int) (cost * 1.1);
+        cost = (int) (cost * 0.1);
 //        cost *= 100; // calculate in cents for stripe
         return cost;
     }// Add service charge to flight

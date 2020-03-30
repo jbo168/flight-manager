@@ -98,7 +98,7 @@ public class BookingController {
         model.addAttribute("flightCost", flightCost);
         model.addAttribute("extraCharges", extraCharge);
         model.addAttribute("serviceCharge", serviceCharge);
-        model.addAttribute("total", flightCost + serviceCharge);
+        model.addAttribute("total", flightCost + serviceCharge + extraCharge);
         model.addAttribute("card", new Card());
 
         return "noStripe";
