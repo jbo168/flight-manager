@@ -26,11 +26,16 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand ml-lg-5" href="/index">Home</a>
+    <a class="navbar-brand ml-lg-5" href="/">Home</a>
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">Your Flights</a>
+            <a class="nav-link disabled" href="/userFlights">Your Flights</a>
         </li>
+    </ul>
+    <ul class="navbar-nav justify-content-end">
+    <li class="nav-item justify-content-end">
+        <a class="btn btn-sm btn-danger" th:onclick="window.location.href = '/logout'">Logout</a>
+    </li>
     </ul>
 </nav>
 
@@ -41,9 +46,6 @@
             <div class="col-md-2">
                 <h2>Flight List</h2>
             </div>
-            <div class="col-md-2">
-                <button class="btn-danger" th:onclick="window.location.href = '/logout'">Logout</button>
-            </div>
         </div>
         <table id="flightTable" name="flightTable" class="table table-striped table-bordered" cellspacing="0" width="100%" >
             <thead>
@@ -52,7 +54,7 @@
                 <th>From</th>
                 <th>To</th>
                 <th>Cost (€)</th>
-                <th>Amount of tickets</th>
+                <th>Date and Time</th>
                 <th>Booking</th>
             </tr>
             <thead>
@@ -62,11 +64,11 @@
                 <td th:text="${flight.routeFrom}"></td>
                 <td th:text="${flight.routeTo}"></td>
                 <td th:text="${flight.cost}"></td>
-                <td th:text="${flight.tickets}"></td>
+                <td th:text="${flight.date}"></td>
+
                 <td><a class="btn btn-primary" th:href="${'/bookingForm1/' + flight.getFlightId()}"> Book</a></td>
             </tr>
             </tbody>
-
         </table>
     </div>
 </div>

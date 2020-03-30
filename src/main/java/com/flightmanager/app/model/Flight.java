@@ -93,11 +93,6 @@ public class Flight implements Subject, Visitable {
         this.tickets = tickets;
     }
 
-    @Override
-    public int accept(Visitor visitor) {
-        return visitor.visitServiceCharge(this);
-    }
-
     @Basic
     @Column(name = "departure")
     public String getDate() {
@@ -116,6 +111,11 @@ public class Flight implements Subject, Visitable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public int accept(Visitor visitor) {
+        return visitor.visitServiceCharge(this);
     }
 
     @Override
