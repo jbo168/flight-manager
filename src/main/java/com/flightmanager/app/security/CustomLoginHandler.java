@@ -53,10 +53,10 @@ public class CustomLoginHandler implements AuthenticationSuccessHandler {
         accTypeTargetUrlMap.put("admin","/flights");
         accTypeTargetUrlMap.put("Manager","/users");
         accTypeTargetUrlMap.put("manager","/users");
-        accTypeTargetUrlMap.put("Customer","/userFlights");
-        accTypeTargetUrlMap.put("customer","/userFlights");
-        accTypeTargetUrlMap.put(null,"/userFlights");
-        accTypeTargetUrlMap.put("","/userFlights");
+        accTypeTargetUrlMap.put("Customer","/viewFlights");
+        accTypeTargetUrlMap.put("customer","/viewFlights");
+        accTypeTargetUrlMap.put(null,"/viewFlights");
+        accTypeTargetUrlMap.put("","/viewFlights");
 
         if(accTypeTargetUrlMap.containsKey(currentUser.getAccount_type())){
             return accTypeTargetUrlMap.get(currentUser.getAccount_type());
