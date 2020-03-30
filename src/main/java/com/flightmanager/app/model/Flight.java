@@ -95,7 +95,7 @@ public class Flight implements Subject, Visitable {
 
     @Override
     public int accept(Visitor visitor) {
-        return visitor.visit(this);
+        return visitor.visitServiceCharge(this);
     }
 
     @Basic

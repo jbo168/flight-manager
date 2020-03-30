@@ -1,7 +1,10 @@
 package com.flightmanager.app.model;
 
 
-public class BookingData {
+import com.flightmanager.app.visitor.Visitable;
+import com.flightmanager.app.visitor.Visitor;
+
+public class BookingData implements Visitable {
     //luggage, address, extra request, class
     private int flight_id;
     private int userID;
@@ -11,6 +14,12 @@ public class BookingData {
     private String address;
     private String ticketClass;
     private String extraRequest;
+
+
+    @Override
+    public int accept(Visitor visitor) {
+        return visitor.visitExtraCharge(this);
+    }
 
     public int getLuggage() {
         return luggage;
