@@ -22,6 +22,7 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     BookingDAO bookingDAO;
 
+    BookingData data;
     List<FormHandler> handlers = new ArrayList<>();
 
     @Override
@@ -65,9 +66,15 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public void executeChain(){
+    public BookingData executeChain(){
         BookingData data = new BookingData();
         handlers.get(0).process(data);
+
+        this.data = data;
+        return data;
     }
 
+    public BookingData getData() {
+        return data;
+    }
 }

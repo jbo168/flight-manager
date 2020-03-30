@@ -1,11 +1,10 @@
 package com.flightmanager.app.service;
 
-import com.flightmanager.app.adaptor.BookingAdaptor;
 import com.flightmanager.app.forms.FormHandler;
 import com.flightmanager.app.model.Booking;
+import com.flightmanager.app.model.BookingData;
 import com.flightmanager.app.model.Flight;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -18,5 +17,5 @@ public interface BookingService {
 
     void addHandler(FormHandler newHandler);
 
-    void executeChain();
+    BookingData executeChain();
 }

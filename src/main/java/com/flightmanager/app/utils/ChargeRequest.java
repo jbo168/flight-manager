@@ -1,6 +1,5 @@
 package com.flightmanager.app.utils;
 
-
 public class ChargeRequest {
     public enum Currency{
         EUR, USD;

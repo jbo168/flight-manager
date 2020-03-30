@@ -1,49 +1,36 @@
 package com.flightmanager.app.controller;
 
-import com.flightmanager.app.model.Card;
-import com.flightmanager.app.utils.ChargeRequest;
-import com.flightmanager.app.utils.StripeResponse;
-import com.flightmanager.app.service.FlightService;
-import com.flightmanager.app.service.StripeService;
-
-import com.flightmanager.app.visitor.ServiceVisitor;
-import com.stripe.exception.StripeException;
-import com.stripe.model.Charge;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PaymentController {
-
-    @Value("${PUBLIC_KEY_STRIPE}")
-    private String apiKey;
-    @Autowired
-    private StripeService service;
-    @Autowired
-    private FlightService flightService;
-
-    @GetMapping("/pay")
-    public String pay(Model model){
-
-        int flightCost = flightService.findById(2).get().getCost();
-        int serviceCharge = flightService.findById(2).get().accept(new ServiceVisitor());
-        model.addAttribute("flightCost", flightCost);
-        model.addAttribute("serviceCharge", serviceCharge);
-        model.addAttribute("total", flightCost + serviceCharge);
-        model.addAttribute("card", new Card());
-
-        return "noStripe";
-    }
-
-    @PostMapping("/processPayment")
-    public String processPayment(Card card){
-        if (!card.validate()) return "noStripe";
-
-        return "redirect:/userFlights";
-    }
+//
+//    @Value("${PUBLIC_KEY_STRIPE}")
+//    private String apiKey;
+//    @Autowired
+//    private StripeService service;
+//    @Autowired
+//    private FlightService flightService;
+//
+//    @GetMapping("/pay")
+//    public String pay(Model model){
+//
+//        int flightCost = flightService.findById(2).get().getCost();
+//        int serviceCharge = flightService.findById(2).get().accept(new ServiceVisitor());
+//        model.addAttribute("flightCost", flightCost);
+//        model.addAttribute("serviceCharge", serviceCharge);
+//        model.addAttribute("total", flightCost + serviceCharge);
+//        model.addAttribute("card", new Card());
+//
+//        return "noStripe";
+//    }
+//
+//    @PostMapping("/processPayment")
+//    public String processPayment(Card card){
+//        if (!card.validate()) return "noStripe";
+//
+//        return "redirect:/userFlights";
+//    }
 
     //Stripe
 //    @RequestMapping("/checkout")
