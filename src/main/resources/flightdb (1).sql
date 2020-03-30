@@ -143,6 +143,10 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for table `flight`
 --
+
+ALTER TABLE `flight` ADD `first_class_tickets` INT(128) NULL DEFAULT NULL AFTER `status`;
+
+
 ALTER TABLE `flight`
   MODIFY `flight_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
