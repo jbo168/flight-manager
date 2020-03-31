@@ -12,9 +12,19 @@
     <title>Checkout</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand ml-lg-5 pl-lg-5" href="/">Home</a>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand ml-lg-5" href="/viewFlights">Home</a>
+    <ul class="navbar-nav mr-lg-5">
+        <li class="nav-item  ml-lg-3">
+            <a class="nav-link" href="/userFlights">Your Flights</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav justify-content-end">
+        <li class="nav-item justify-content-end">
+            <a class="btn btn-sm btn-danger" th:onclick="window.location.href = '/logout'">Logout</a>
+        </li>
+    </ul>
+</nav>
 <div class="container">
     <br>
     <div class="row">
