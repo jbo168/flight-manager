@@ -15,7 +15,6 @@ public class BookingData implements Visitable {
     private String ticketClass;
     private String extraRequest;
 
-
     @Override
     public int accept(Visitor visitor) {
         return visitor.visitExtraCharge(this);
