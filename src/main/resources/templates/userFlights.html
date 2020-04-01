@@ -59,7 +59,15 @@
                     <div class="row">
                         <h5 class="col-3">Status :</h5><p class="col-4" th:text="${flight.getStatus()}" ></p>
                     </div>
-                    <div><a class="btn btn-primary" th:href="${'/addReview/' + flight.getFlightId()}">Review Flight</a></div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <a class="btn btn-primary" th:href="${'/addReview/' + flight.getFlightId()}">Review Flight</a>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-danger" >Cancel Flight</a>
+                        </div>
+                    </div>
+<!--                    <div><a class="btn btn-primary" th:href="${'/addReview/' + flight.getFlightId()}">Review Flight</a></div>-->
                 </div>
             </div>
             <br>

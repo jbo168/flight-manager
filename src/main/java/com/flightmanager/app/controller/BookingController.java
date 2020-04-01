@@ -8,6 +8,7 @@ import com.flightmanager.app.service.FlightService;
 import com.flightmanager.app.service.UserService;
 import com.flightmanager.app.visitor.CostVisitor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -113,4 +114,8 @@ public class BookingController {
         return "redirect:/userFlights";
     }
 
+//    @PostMapping("/cancelFlightBooking")
+//    public String cancelFlightBooking(){
+//        return "redirect:/userFlights";
+//    }
 }
