@@ -1,7 +1,7 @@
 package com.flightmanager.app.controller;
 
-import com.flightmanager.app.forms.Form1;
-import com.flightmanager.app.forms.Form2;
+import com.flightmanager.app.chain.Form1;
+import com.flightmanager.app.chain.Form2;
 import com.flightmanager.app.model.*;
 import com.flightmanager.app.service.BookingService;
 import com.flightmanager.app.service.FlightService;

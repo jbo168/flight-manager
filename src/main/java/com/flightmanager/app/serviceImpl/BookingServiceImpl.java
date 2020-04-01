@@ -3,7 +3,7 @@ package com.flightmanager.app.serviceImpl;
 import com.flightmanager.app.adaptor.BaseBookingService;
 import com.flightmanager.app.adaptor.BookingAdaptor;
 import com.flightmanager.app.dao.BookingDAO;
-import com.flightmanager.app.forms.FormHandler;
+import com.flightmanager.app.chain.FormHandler;
 import com.flightmanager.app.model.Booking;
 import com.flightmanager.app.model.BookingData;
 import com.flightmanager.app.model.Flight;
@@ -12,7 +12,6 @@ import com.flightmanager.app.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
