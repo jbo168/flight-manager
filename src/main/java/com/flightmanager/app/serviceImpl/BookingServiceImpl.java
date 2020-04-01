@@ -79,7 +79,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void adaptBookingData(){
-
+        // test commit 
         BaseBookingService dataAdapted = new BookingAdaptor(data.getFlight_id(),data.getUserID());
         bookingDAO.save(dataAdapted.getBooking());
 
