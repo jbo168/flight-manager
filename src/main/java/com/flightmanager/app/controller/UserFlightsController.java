@@ -40,6 +40,7 @@ public class UserFlightsController {
             try {
                 ArrayList<Flight> myFlights = checkBookingService.findAll((int) currentUser.getUser_ID());
                 model.addAttribute("usersCurrentFlights", checkBookingService.findAll((int) currentUser.getUser_ID()));
+                model.addAttribute("booking", aBooking);
             }catch (Exception e){
                 e.printStackTrace();
                 return "userFlightsNoBookings";
