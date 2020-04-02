@@ -19,4 +19,5 @@ public interface BookingService {
 
     BookingData executeChain();
     void adaptBookingData();
+    void deleteById(int bookingId);
 }

@@ -2,6 +2,9 @@ package com.flightmanager.app.serviceImpl;
 
 import com.flightmanager.app.adaptor.BaseBookingService;
 import com.flightmanager.app.adaptor.BookingAdaptor;
+import com.flightmanager.app.command.BookFlightCommand;
+import com.flightmanager.app.command.CancelFlightCommand;
+import com.flightmanager.app.command.FlightCommandInvoker;
 import com.flightmanager.app.dao.BookingDAO;
 import com.flightmanager.app.chain.FormHandler;
 import com.flightmanager.app.model.Booking;
@@ -79,10 +82,14 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void adaptBookingData(){
-        // test commit 
         BaseBookingService dataAdapted = new BookingAdaptor(data.getFlight_id(),data.getUserID());
-        bookingDAO.save(dataAdapted.getBooking());
+        FlightCommandInvoker flightCommandInvoker = new FlightCommandInvoker();
+        flightCommandInvoker.executeCommand(new BookFlightCommand(dataAdapted.getBooking()));
+    }
 
+    @Override
+    public void deleteById(int bookingId) {
+        bookingDAO.deleteById(bookingId);
     }
 
     public BookingData getData() {

@@ -42,5 +42,10 @@ public class BookingDAOImpl implements BookingDAO {
         return bookings ;
     }
 
+    @Override
+    public void deleteById(int bookingId) {
+        bookingRepository.deleteById(bookingId);
+    }
+
 
 }

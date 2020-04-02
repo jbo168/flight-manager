@@ -2,13 +2,14 @@ package com.flightmanager.app.controller;
 
 import com.flightmanager.app.chain.Form1;
 import com.flightmanager.app.chain.Form2;
+import com.flightmanager.app.command.CancelFlightCommand;
+import com.flightmanager.app.command.FlightCommandInvoker;
 import com.flightmanager.app.model.*;
 import com.flightmanager.app.service.BookingService;
 import com.flightmanager.app.service.FlightService;
 import com.flightmanager.app.service.UserService;
 import com.flightmanager.app.visitor.CostVisitor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -114,8 +115,11 @@ public class BookingController {
         return "redirect:/userFlights";
     }
 
-//    @PostMapping("/cancelFlightBooking")
-//    public String cancelFlightBooking(){
-//        return "redirect:/userFlights";
-//    }
+    @PostMapping("/cancelFlightBooking/{bookingId}")
+    public String cancelFlightBooking(@PathVariable int bookingId){
+        FlightCommandInvoker flightCommandInvoker = new FlightCommandInvoker();
+        flightCommandInvoker.executeCommand(new CancelFlightCommand(bookingId));
+
+        return "redirect:/userFlights";
+    }
 }

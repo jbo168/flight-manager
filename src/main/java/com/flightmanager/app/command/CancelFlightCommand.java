@@ -1,6 +1,9 @@
 package com.flightmanager.app.command;
 
+import com.flightmanager.app.dao.BookingDAO;
 import com.flightmanager.app.model.Booking;
+import com.flightmanager.app.service.BookingService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author: John Long
@@ -8,13 +11,17 @@ import com.flightmanager.app.model.Booking;
  **/
 
 public class CancelFlightCommand implements FlightCommand {
-    private Booking booking;
 
-    public CancelFlightCommand(Booking booking){
-        this.booking = booking;
+    @Autowired
+    BookingService bookingService;
+
+    private int flightId;
+
+    public CancelFlightCommand(int flightId){
+        this.flightId = flightId;
     }
 
     public void execute() {
-        //TODO remove flight booking from list of booked flights
+        bookingService.deleteById(flightId);
     }
 }

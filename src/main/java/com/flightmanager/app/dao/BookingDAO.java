@@ -13,4 +13,5 @@ public interface BookingDAO {
     Optional<Booking> findById(int id);
     ArrayList<Booking> findAll();
 
+    void deleteById(int bookingId);
 }
