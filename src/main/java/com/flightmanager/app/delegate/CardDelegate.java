@@ -5,10 +5,10 @@ import com.flightmanager.app.model.Card;
 import java.util.Calendar;
 
 
-public class CardAuthImpl implements CardAuth{
+public class CardDelegate implements CardAuth{
     private Card card;
 
-    public CardAuthImpl(Card card){
+    public CardDelegate(Card card){
         this.card = card;
     }
 

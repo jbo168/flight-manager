@@ -2,7 +2,6 @@ package com.flightmanager.app.model;
 
 
 import com.flightmanager.app.delegate.CardAuth;
-import com.flightmanager.app.delegate.CardAuthImpl;
 
 public class Card implements CardAuth {
     private String cardNumber;
