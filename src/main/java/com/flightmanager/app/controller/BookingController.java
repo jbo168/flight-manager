@@ -2,8 +2,6 @@ package com.flightmanager.app.controller;
 
 import com.flightmanager.app.chain.Form1;
 import com.flightmanager.app.chain.Form2;
-import com.flightmanager.app.command.CancelFlightCommand;
-import com.flightmanager.app.command.FlightCommandInvoker;
 import com.flightmanager.app.model.*;
 import com.flightmanager.app.service.BookingService;
 import com.flightmanager.app.service.FlightService;
@@ -54,6 +52,8 @@ public class BookingController {
 
     }
 
+    //Look into work flow pattern
+
     @PostMapping(value = "/bookingForm1")
     public String processData(Form1 form1){
 
@@ -75,7 +75,7 @@ public class BookingController {
     @PostMapping(value = "/bookingForm2")
     public String processData2(Form2 form2){
 
-        //Send Form1 to Handler
+        //Send Form2 to Handler
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         User currentUser = checkUserService.findByEmail(currentPrincipalName);
@@ -115,11 +115,4 @@ public class BookingController {
         return "redirect:/userFlights";
     }
 
-    @PostMapping("/cancelFlightBooking/{bookingId}")
-    public String cancelFlightBooking(@PathVariable int bookingId){
-        FlightCommandInvoker flightCommandInvoker = new FlightCommandInvoker();
-        flightCommandInvoker.executeCommand(new CancelFlightCommand(bookingId));
-
-        return "redirect:/userFlights";
-    }
 }

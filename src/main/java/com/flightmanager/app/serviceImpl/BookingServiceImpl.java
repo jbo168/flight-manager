@@ -4,6 +4,7 @@ import com.flightmanager.app.adaptor.BaseBookingService;
 import com.flightmanager.app.adaptor.BookingAdaptor;
 import com.flightmanager.app.command.BookFlightCommand;
 import com.flightmanager.app.command.CancelFlightCommand;
+import com.flightmanager.app.command.FlightCommand;
 import com.flightmanager.app.command.FlightCommandInvoker;
 import com.flightmanager.app.dao.BookingDAO;
 import com.flightmanager.app.chain.FormHandler;
@@ -25,6 +26,8 @@ public class BookingServiceImpl implements BookingService {
     FlightRepository flightRepository;
     @Autowired
     BookingDAO bookingDAO;
+    @Autowired
+    FlightCommand flightCommand;
 
     BookingData data;
     List<FormHandler> handlers = new ArrayList<>();
@@ -84,7 +87,8 @@ public class BookingServiceImpl implements BookingService {
     public void adaptBookingData(){
         BaseBookingService dataAdapted = new BookingAdaptor(data.getFlight_id(),data.getUserID());
         FlightCommandInvoker flightCommandInvoker = new FlightCommandInvoker();
-        flightCommandInvoker.executeCommand(new BookFlightCommand(dataAdapted.getBooking()));
+        flightCommand.setBooking(dataAdapted.getBooking());
+        flightCommandInvoker.executeCommand(flightCommand);
     }
 
     @Override
