@@ -2,6 +2,7 @@ package com.flightmanager.app.controller;
 
 import com.flightmanager.app.chain.Form1;
 import com.flightmanager.app.chain.Form2;
+import com.flightmanager.app.delegate.CardAuthImpl;
 import com.flightmanager.app.model.*;
 import com.flightmanager.app.service.BookingService;
 import com.flightmanager.app.service.FlightService;
@@ -108,6 +109,7 @@ public class BookingController {
 
     @PostMapping("/processPayment")
     public String processPayment(Card card){
+        card.setAuth(new CardAuthImpl(card));
         if (!card.validate()) return "noStripe";
 
         checkBookingService.adaptBookingData();

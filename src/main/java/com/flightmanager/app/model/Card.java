@@ -2,12 +2,13 @@ package com.flightmanager.app.model;
 
 
 import com.flightmanager.app.delegate.CardAuth;
+import com.flightmanager.app.delegate.CardAuthImpl;
 
-public class Card {
-    private CardAuth auth = new CardAuth(this);
+public class Card implements CardAuth {
     private String cardNumber;
     private String expDate;
     private String csv;
+    private CardAuth auth;
 
 
     public String getCardNumber() {
@@ -34,7 +35,13 @@ public class Card {
         this.csv = csv;
     }
 
+    public void setAuth(CardAuth auth) {
+        this.auth = auth;
+    }
+
+    @Override
     public boolean validate(){
+//        CardAuthImpl auth = new CardAuthImpl(this);
         return auth.validate();
     }
 
