@@ -20,16 +20,13 @@ public class BookFlightCommand implements FlightCommand {
 
     private Booking booking;
 
-//    public BookFlightCommand(Booking booking){
-//        this.booking = booking;
-//    }
+
     @Override
     public void setBooking(Booking booking){
         this.booking = booking;
     }
 
     public void execute() {
-//        booking.book();
         bookingDAO.save(booking);
     }
 }
