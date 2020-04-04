@@ -39,10 +39,6 @@ public class BookingController {
 
     @GetMapping(value = "/bookingForm1/{id}")
     public String form1Start(@PathVariable int id, Model model) {
-//
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String currentPrincipalName = authentication.getName();
-//        User currentUser = checkUserService.findByEmail(currentPrincipalName);
 
         Form1 form1 = new Form1();
         form1.setFlight_id(id);

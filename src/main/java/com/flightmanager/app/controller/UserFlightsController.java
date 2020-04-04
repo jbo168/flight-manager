@@ -30,39 +30,40 @@ public class UserFlightsController {
 
     public Booking aBooking;
 
-    @GetMapping(value = "/userFlights")
-    public String listFlights(Model model) {
+        @GetMapping(value = "/userFlights")
+        public String listFlights(Model model) {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentPrincipalName = authentication.getName();
-        User currentUser = checkUserService.findByEmail(currentPrincipalName);
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String currentPrincipalName = authentication.getName();
+            User currentUser = checkUserService.findByEmail(currentPrincipalName);
 
-        try {
-            ArrayList<Flight> myFlights = checkBookingService.findAll((int) currentUser.getUser_ID());
-            model.addAttribute("usersCurrentFlights", checkBookingService.findAll((int) currentUser.getUser_ID()));
-            model.addAttribute("booking", aBooking);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "userFlightsNoBookings";
+            try {
+                ArrayList<Flight> myFlights = checkBookingService.findAll((int) currentUser.getUser_ID());
+                model.addAttribute("usersCurrentFlights", checkBookingService.findAll((int) currentUser.getUser_ID()));
+                model.addAttribute("booking", aBooking);
+            }catch (Exception e){
+                e.printStackTrace();
+                return "userFlightsNoBookings";
+            }
+            return "userFlights";
+
         }
-        return "userFlights";
 
-    }
+        @GetMapping(value = "/addReview/{id}")
+        public String add(@PathVariable int id,Model model){
 
-    @GetMapping(value = "/addReview/{id}")
-    public String add(@PathVariable int id, Model model) {
-
-        Booking newBooking = checkBookingService.findByID(id).get();
-        aBooking = newBooking;
+            Booking newBooking = checkBookingService.findByID(id).get();
+            aBooking = newBooking;
 
         ReviewService reviewAdaptor = new BookingAdaptor(newBooking);
 
-        model.addAttribute("reviewAdapter", reviewAdaptor);  //Push a Review Adaptor On Client
-        return "addReview";
-    }
+            model.addAttribute("reviewAdapter" , reviewAdaptor);  //Push a Review Adaptor On Client
+            return "addReview";
+        }
 
-    @GetMapping(value = "/userFlights")
-    public String processReview(Review reviewAdaptor) {
+        // Adapt Review into a Booking
+        @PostMapping(value = "/userFlights")
+        public String processReview(Review reviewAdaptor){
 
         aBooking.setComment(reviewAdaptor.getComment());
         aBooking.setScore(reviewAdaptor.getScore());
