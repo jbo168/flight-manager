@@ -10,8 +10,6 @@ public class FlightManagerApplication extends SpringBootServletInitializer{
 
     public static void main(String[] args) {
         SpringApplication.run(FlightManagerApplication.class, args);
-        Long id = 7L;
-
     }
 
 }
