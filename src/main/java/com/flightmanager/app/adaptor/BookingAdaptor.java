@@ -1,17 +1,14 @@
 package com.flightmanager.app.adaptor;
 
-
 import com.flightmanager.app.model.Booking;
-import com.flightmanager.app.model.BookingData;
-import com.flightmanager.app.service.BookingService;
 
 //Pluggable Adaptor Option 1 from slides
 
 public class BookingAdaptor implements ReviewService,BaseBookingService {
 
-    public Booking booking;
-    public String comment;
-    public int score;
+    Booking booking;
+    String comment;
+    int score;
 
     public BookingAdaptor(Booking newBooking) {
         this.booking = newBooking;
@@ -19,7 +16,7 @@ public class BookingAdaptor implements ReviewService,BaseBookingService {
         this.score = newBooking.getScore();
     }
 
-    public BookingAdaptor(int flightId,int userId){
+    public BookingAdaptor(int flightId, int userId){
         this.booking = new Booking();
         this.booking.setFlight_ID(flightId);
         this.booking.setUser_ID(userId);
@@ -45,9 +42,7 @@ public class BookingAdaptor implements ReviewService,BaseBookingService {
         booking.setScore(score);
     }
 
-
-    //Booking Data
-
+    //Booking Data Adapted
 
     public Booking getBooking(){
         return this.booking;

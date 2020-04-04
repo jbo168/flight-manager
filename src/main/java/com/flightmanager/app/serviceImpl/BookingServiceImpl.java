@@ -2,8 +2,6 @@ package com.flightmanager.app.serviceImpl;
 
 import com.flightmanager.app.adaptor.BaseBookingService;
 import com.flightmanager.app.adaptor.BookingAdaptor;
-import com.flightmanager.app.command.BookFlightCommand;
-import com.flightmanager.app.command.CancelFlightCommand;
 import com.flightmanager.app.command.FlightCommand;
 import com.flightmanager.app.command.FlightCommandInvoker;
 import com.flightmanager.app.dao.BookingDAO;
@@ -76,7 +74,6 @@ public class BookingServiceImpl implements BookingService {
     public BookingData executeChain(){
 
         BookingData data = new BookingData();
-
         handlers.get(0).process(data);
 
         this.data = data;

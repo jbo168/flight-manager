@@ -4,15 +4,13 @@ package com.flightmanager.app.adaptor;
 
 public class Review implements ReviewService {
 
-    public String comment;
-    public int score;
+    String comment;
+    int score;
 
-//    @Override
     public void setComment(String comment) {
         this.comment = comment;
     }
 
-//    @Override
     public void setScore(int score) {
         this.score = score;
     }

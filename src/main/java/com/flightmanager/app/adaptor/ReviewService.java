@@ -1,8 +1,5 @@
 package com.flightmanager.app.adaptor;
 
-//Target Interface
-// Adapter interface
-
 //Narrow Adaptee Interface need be able to set score
 
 //Adapter
