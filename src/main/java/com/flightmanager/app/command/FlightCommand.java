@@ -8,9 +8,6 @@ import com.flightmanager.app.model.Booking;
  **/
 
 public interface FlightCommand {
-    //    public BookFlightCommand(Booking booking){
-    //        this.booking = booking;
-    //    }
     void setBooking(Booking booking);
 
     void execute();

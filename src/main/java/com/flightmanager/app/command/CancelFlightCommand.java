@@ -20,7 +20,6 @@ public class CancelFlightCommand implements FlightCommand {
 
     Booking booking;
 
-
     @Override
     public void setBooking(Booking booking) {
         this.booking = booking;
