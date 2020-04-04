@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -45,6 +46,12 @@ public class BookingDAOImpl implements BookingDAO {
     @Override
     public void deleteById(int bookingId) {
         bookingRepository.deleteById(bookingId);
+    }
+
+    @Override
+    public List<Booking> findBookingByUserAndFlight(int userId, int flightId) {
+        List<Booking> bookings = bookingRepository.findByUserAndFlightId(userId, flightId);
+        return bookings;
     }
 
 

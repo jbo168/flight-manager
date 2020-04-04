@@ -33,6 +33,12 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Optional<Booking> findByID(int i) {  return bookingDAO.findById(i); }
 
+    @Override
+    public List<Booking> findByUserIdAndFlightId(int userId, int flightId) {
+        List<Booking> booking = bookingDAO.findBookingByUserAndFlight(userId, flightId);
+        return booking;
+    }
+
     public Booking update(Booking booking){ return bookingDAO.update(booking); }
 
     public ArrayList<Flight> findAll(int id) {

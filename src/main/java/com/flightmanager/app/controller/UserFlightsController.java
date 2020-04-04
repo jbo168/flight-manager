@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.awt.print.Book;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -40,7 +41,7 @@ public class UserFlightsController {
             try {
                 ArrayList<Flight> myFlights = checkBookingService.findAll((int) currentUser.getUser_ID());
                 model.addAttribute("usersCurrentFlights", checkBookingService.findAll((int) currentUser.getUser_ID()));
-                model.addAttribute("booking", aBooking);
+                model.addAttribute("user", currentUser);
             }catch (Exception e){
                 e.printStackTrace();
                 return "userFlightsNoBookings";
@@ -72,9 +73,14 @@ public class UserFlightsController {
 
     }
 
-    @PostMapping("/cancelFlightBooking/{bookingId}")
-    public String cancelFlightBooking(@PathVariable int bookingId) {
-        checkBookingService.deleteById(bookingId);
+    @GetMapping("/cancelFlightBooking/{flightId}/{userId}")
+    public String cancelFlightBooking(@PathVariable("flightId") int flightId,
+                                      @PathVariable("userId") int userId) {
+        List<Booking> booking = checkBookingService.findByUserIdAndFlightId(userId,flightId);
+        for (Booking bookings: booking) {
+            checkBookingService.deleteById(bookings.getBooking_ID());
+        }
+
         return "redirect:/userFlights";
     }
 }

@@ -4,6 +4,7 @@ import com.flightmanager.app.model.Booking;
 import com.flightmanager.app.model.Flight;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public interface BookingDAO {
@@ -14,4 +15,6 @@ public interface BookingDAO {
     ArrayList<Booking> findAll();
 
     void deleteById(int bookingId);
+
+    List<Booking> findBookingByUserAndFlight(int userId, int flightId);
 }

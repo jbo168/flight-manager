@@ -6,6 +6,7 @@ import com.flightmanager.app.model.BookingData;
 import com.flightmanager.app.model.Flight;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public interface BookingService {
@@ -14,6 +15,7 @@ public interface BookingService {
     ArrayList<Flight> findAll(int i);
     ArrayList<Booking> returnBookings(int i);
     Optional<Booking> findByID(int i);
+    List<Booking> findByUserIdAndFlightId(int userId, int flightId);
 
     void addHandler(FormHandler newHandler);
 
