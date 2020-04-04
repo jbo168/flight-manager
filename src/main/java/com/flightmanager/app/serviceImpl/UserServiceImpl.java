@@ -50,8 +50,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() {
-        List<User> userList = (List<User>) userDAO.findAll();
-        return userList;
+        return (List<User>) userDAO.findAll();
     }
 
     @Override
@@ -66,9 +65,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean validLogin(String email, String password) {
-        User cust = userDAO.findByEmail(email);
-        if(cust != null){
-            if (email.equals(cust.getEmail()) && password.equals(cust.getPassword())) {
+        User user = userDAO.findByEmail(email);
+        if(user != null){
+            if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
                 return true;
             }
         }
