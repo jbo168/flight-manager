@@ -117,10 +117,6 @@ public class BookingController {
         return "redirect:/userFlights";
     }
 
-    @PostMapping("/cancelFlightBooking/{bookingId}")
-    public String cancelFlightBooking(@PathVariable int bookingId){
-        checkBookingService.deleteById(bookingId);
-        return "redirect:/userFlights";
-    }
+
 
 }
