@@ -4,6 +4,9 @@ import com.flightmanager.app.adaptor.BaseReview;
 import com.flightmanager.app.adaptor.BookingAdaptor;
 import com.flightmanager.app.adaptor.Review;
 import com.flightmanager.app.adaptor.ReviewService;
+import com.flightmanager.app.command.CancelFlightCommand;
+import com.flightmanager.app.command.FlightCommand;
+import com.flightmanager.app.command.FlightCommandInvoker;
 import com.flightmanager.app.model.Booking;
 import com.flightmanager.app.model.Flight;
 import com.flightmanager.app.model.User;
@@ -28,6 +31,8 @@ public class UserFlightsController {
     private UserService checkUserService;
     @Autowired
     private BookingService checkBookingService;
+    @Autowired
+    private FlightCommand flightCommand;
 
     public Booking aBooking;
 
@@ -76,9 +81,11 @@ public class UserFlightsController {
     @GetMapping("/cancelFlightBooking/{flightId}/{userId}")
     public String cancelFlightBooking(@PathVariable("flightId") int flightId,
                                       @PathVariable("userId") int userId) {
-        List<Booking> booking = checkBookingService.findByUserIdAndFlightId(userId,flightId);
-        for (Booking bookings: booking) {
-            checkBookingService.deleteById(bookings.getBooking_ID());
+        List<Booking> bookings = checkBookingService.findByUserIdAndFlightId(userId,flightId);
+        for (Booking booking: bookings) {
+            FlightCommandInvoker flightCommandInvoker = new FlightCommandInvoker();
+            flightCommand.setBooking(booking);
+            flightCommandInvoker.executeCommand(flightCommand);
         }
 
         return "redirect:/userFlights";

@@ -6,6 +6,8 @@ import com.flightmanager.app.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author: John Long
  * @create: 17-Mar-2020
@@ -16,18 +18,15 @@ public class CancelFlightCommand implements FlightCommand {
     @Autowired
     BookingService bookingService;
 
-    private int flightId;
+    Booking booking;
 
-//    public CancelFlightCommand(int flightId){
-//        this.flightId = flightId;
-//    }
 
     @Override
     public void setBooking(Booking booking) {
-        this.flightId = booking.getFlight_ID();
+        this.booking = booking;
     }
 
     public void execute() {
-        bookingService.deleteById(flightId);
+        bookingService.deleteById(booking.getBooking_ID());
     }
 }
