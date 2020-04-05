@@ -1,8 +1,12 @@
 package com.flightmanager.app.controller;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookingControllerTest {
-    //test commit
+    @Test
+    void test1(){
 
+    }
 }

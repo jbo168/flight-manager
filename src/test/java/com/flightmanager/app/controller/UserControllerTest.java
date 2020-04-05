@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserControllerTest {
-    // test commit
     AbstractFactory userFactory = ConcreteFactory.getFactory("customer");
 
     @Test
