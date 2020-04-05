@@ -15,6 +15,6 @@ public class Review implements ReviewService {
         this.score = score;
     }
 
-    public int getScore(){ return this.score; };
-    public String getComment(){ return this.comment; };
+    public int getScore(){ return this.score; }
+    public String getComment(){ return this.comment; }
 }

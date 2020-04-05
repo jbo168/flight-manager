@@ -89,8 +89,8 @@ public class BookingController {
 
         BookingData data = checkBookingService.executeChain();
 
-        Flight bookedFlight;
         if(flightService.findById(data.getFlight_id()).isPresent()) {
+            Flight bookedFlight;
             bookedFlight = (flightService.findById(data.getFlight_id()).get());
             int flightCost = bookedFlight.getCost();
             int extraCharge = data.accept(new CostVisitor());

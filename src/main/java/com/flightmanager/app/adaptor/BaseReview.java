@@ -10,6 +10,6 @@ public class BaseReview {
     }
 
     public String printComment() {
-        return null;
+        return text;
     }
 }

@@ -15,8 +15,8 @@ public class Booking{
     private int booking_ID;
     private int flight_ID;
     private int user_ID;
-    public String comment;
-    public int score;
+    private String comment;
+    private int score;
 
     public Booking() {super();}
 

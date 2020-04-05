@@ -29,7 +29,7 @@ public class UserFlightsController {
     @Autowired
     private FlightCommand flightCommand;
 
-    public Booking aBooking;
+    protected Booking aBooking;
 
         @GetMapping(value = "/userFlights")
         public String listFlights(Model model) {
