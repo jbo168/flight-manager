@@ -62,6 +62,7 @@ public class UserController {
         customer.buildEmail(registeringUser.getEmail());
         customer.buildContact(registeringUser.getContact());
         customer.buildPassword(registeringUser.getPassword());
+        customer.buildAccountType();
         User user = customer.getUser();
 
 
