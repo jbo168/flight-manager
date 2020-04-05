@@ -29,7 +29,6 @@ public class CustomLoginHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         handle(httpServletRequest, httpServletResponse, authentication);
-//        clearAuthenticationAttributes(httpServletRequest);
     }
 
     protected void handle(HttpServletRequest request,

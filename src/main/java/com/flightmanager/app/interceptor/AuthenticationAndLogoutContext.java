@@ -26,8 +26,7 @@ public class AuthenticationAndLogoutContext {
 
     public long getTime(){
         Date date = new Date();
-        long time = date.getTime();
-        return time;
+        return date.getTime();
     }
 
     public String getUser(){

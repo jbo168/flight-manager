@@ -66,11 +66,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean validLogin(String email, String password) {
         User user = userDAO.findByEmail(email);
-        if(user != null){
-            if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
+            if((email.equals(user.getEmail()) && password.equals(user.getPassword()))&& user != null) {
                 return true;
             }
-        }
+
         return false;
     }
 
@@ -79,7 +78,7 @@ public class UserServiceImpl implements UserService {
         boolean isValid = true;
         if (user.getFirst_name() != null && user.getLast_name() != null && user.getContact() != null &&
                 user.getEmail() != null && user.getPassword() != null) {
-            if (!((user.getEmail().matches("[A-Za-z0-9@._]*"))) || !(user.getEmail().length() < 30)) {
+            if (!(user.getEmail().matches("[A-Za-z0-9@._]*")) || !(user.getEmail().length() < 30)) {
                 isValid = false;
             }
             else if (!(user.getContact().length() < 11) || !(user.getContact().matches("[0-9]{10}"))) {

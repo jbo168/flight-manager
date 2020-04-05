@@ -1,6 +1,5 @@
 package com.flightmanager.app.command;
 
-import com.flightmanager.app.adaptor.BaseBookingService;
 import com.flightmanager.app.dao.BookingDAO;
 import com.flightmanager.app.model.Booking;
 import org.springframework.beans.factory.annotation.Autowired;

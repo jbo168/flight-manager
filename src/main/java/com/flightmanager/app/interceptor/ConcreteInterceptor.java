@@ -15,7 +15,7 @@ public class ConcreteInterceptor implements Interceptor{
 
     @Override
     public void preMarshallRequest(AuthenticationAndLogoutContext context) {
-        priorityThread.run();
+        priorityThread.start();
         priorityThread.setPriority(3);
         logger.info("Authentication initiated  ;Log-in Status: " + context.getStatus() + " ;Priority Level: " +
                 priorityThread.getPriority());
@@ -24,7 +24,7 @@ public class ConcreteInterceptor implements Interceptor{
     @Override
     public void postMarshallRequest(AuthenticationAndLogoutContext context) {
         priorityThread.setPriority(Thread.NORM_PRIORITY);
-        if(context.getStatus() == true){
+        if(context.getStatus()){
             logger.info("User: " + context.getUser() + " authenticated at: " + context.getDate() + " ;Log-in Status: " + context.getStatus() + " ;Priority Level: " +
                     priorityThread.getPriority());
         }

@@ -23,6 +23,7 @@ public class FlightController {
 
     FlightFactory factory = new FlightFactory();
 
+
         @GetMapping(value = "/flights")
         public String listFlights(Model model) {
             model.addAttribute("flights", flightsService.findAll());

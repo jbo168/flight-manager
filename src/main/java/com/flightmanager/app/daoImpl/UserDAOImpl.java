@@ -37,8 +37,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> findAll() {
-        List<User> flightList = (List<User>) userRepository.findAll();
-        return flightList;
+        return (List<User>) userRepository.findAll();
     }
 
     @Override

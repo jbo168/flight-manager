@@ -13,6 +13,7 @@ public class PriorityThread extends Thread{
 
     Logger logger = LoggerFactory.getLogger(PriorityThread.class);
 
+    @Override
     public void run(){
         logger.info("Interception Priority Thread is running...");
     }
