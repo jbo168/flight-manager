@@ -30,6 +30,5 @@ public class CustomLogoutHandler extends SimpleUrlLogoutSuccessHandler implement
         setDefaultTargetUrl("/login");
 
         super.onLogoutSuccess(request, response, auth);
-
     }
 }

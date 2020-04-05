@@ -36,8 +36,7 @@ public class FlightDAOImpl implements FlightDAO {
 
     @Override
     public List<Flight> findAll() {
-        List<Flight> flightList = (List<Flight>) flightRepository.findAll();
-        return flightList;
+        return  (List<Flight>) flightRepository.findAll();
     }
 
     @Override

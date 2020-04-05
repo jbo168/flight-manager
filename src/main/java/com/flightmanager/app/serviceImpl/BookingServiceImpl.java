@@ -51,11 +51,7 @@ public class BookingServiceImpl implements BookingService {
                 flightIds.add(bookings.get(i).getFlight_ID());
             }
         }
-        ArrayList<Flight> myFlight = (ArrayList<Flight>) flightRepository.findAllById(flightIds);
-
-        //Push Flight into Adaptors
-
-        return myFlight;
+        return (ArrayList<Flight>) flightRepository.findAllById(flightIds);
     }
 
     public ArrayList<Booking> returnBookings(int id){
@@ -79,11 +75,11 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public BookingData executeChain(){
 
-        BookingData data = new BookingData();
-        handlers.get(0).process(data);
+        BookingData bookingData = new BookingData();
+        handlers.get(0).process(bookingData);
 
-        this.data = data;
-        return data;
+        this.data = bookingData;
+        return bookingData;
     }
 
     @Override

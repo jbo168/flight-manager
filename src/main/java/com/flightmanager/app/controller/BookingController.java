@@ -89,16 +89,22 @@ public class BookingController {
 
         BookingData data = checkBookingService.executeChain();
 
-        Flight bookedFlight = flightService.findById(data.getFlight_id()).get();
+        Flight bookedFlight;
+        if(flightService.findById(data.getFlight_id()).isPresent()) {
+            bookedFlight = (flightService.findById(data.getFlight_id()).get());
+            int flightCost = bookedFlight.getCost();
+            int extraCharge = data.accept(new CostVisitor());
+            int serviceCharge = bookedFlight.accept(new CostVisitor());
+            model.addAttribute("flightCost", flightCost);
+            model.addAttribute("extraCharges", extraCharge);
+            model.addAttribute("serviceCharge", serviceCharge);
+            model.addAttribute("total", flightCost + serviceCharge + extraCharge);
+            model.addAttribute("card", new Card());
+        }else{
+            return "viewFlights";
+        }
 
-        int flightCost = bookedFlight.getCost();
-        int extraCharge = data.accept(new CostVisitor());
-        int serviceCharge = bookedFlight.accept(new CostVisitor());
-        model.addAttribute("flightCost", flightCost);
-        model.addAttribute("extraCharges", extraCharge);
-        model.addAttribute("serviceCharge", serviceCharge);
-        model.addAttribute("total", flightCost + serviceCharge + extraCharge);
-        model.addAttribute("card", new Card());
+
 
         return "noStripe";
     }

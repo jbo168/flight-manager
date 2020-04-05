@@ -11,7 +11,7 @@ public class Dispatcher implements Interceptor{
     List<Interceptor> interceptors;
 
     public Dispatcher(){
-        interceptors = new ArrayList<Interceptor>();
+        interceptors = new ArrayList<>();
     }
 
     @Override

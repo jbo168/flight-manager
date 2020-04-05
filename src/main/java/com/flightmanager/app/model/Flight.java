@@ -29,7 +29,6 @@ public class Flight implements Subject, Visitable {
     private int tickets;
     private String departure;
     private String status;
-//    private int first_class_tickets;
 
     @Transient
     private List<Observer> observers;
@@ -128,11 +127,4 @@ public class Flight implements Subject, Visitable {
         observers.add(observer);
     }
 
-//    public int getFirstClassTickets() {
-//        return first_class_tickets;
-//    }
-//
-//    public void setFirstClassTickets(int first_class_tickets) {
-//        this.first_class_tickets = first_class_tickets;
-//    }
 }

@@ -2,11 +2,11 @@ package com.flightmanager.app.adaptor;
 
 public class BaseReview {
 
-    public String text;
-    public int score;
+    private String text;
+    private int score = 0 ;
 
     public int printScore() {
-        return 0;
+        return score;
     }
 
     public String printComment() {

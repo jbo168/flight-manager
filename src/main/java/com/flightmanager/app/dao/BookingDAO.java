@@ -1,7 +1,6 @@
 package com.flightmanager.app.dao;
 
 import com.flightmanager.app.model.Booking;
-import com.flightmanager.app.model.Flight;
 
 import java.util.ArrayList;
 import java.util.List;
