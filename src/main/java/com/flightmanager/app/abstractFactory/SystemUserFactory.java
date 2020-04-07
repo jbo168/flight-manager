@@ -11,12 +11,19 @@ import com.flightmanager.app.builder.UserBuilder;
 public class SystemUserFactory extends AbstractFactory{
 
     @Override
-    public UserBuilder getSystemUser(String userType) {
-        if(userType.equalsIgnoreCase("Admin")){
+    public UserBuilder getSystemAdminUser(String userType) {
             return new SystemAdminUserBuilder();
-        }
-        else if(userType.equalsIgnoreCase("Manager")){
-            return new SystemManagerUserBuilder();
+    }
+
+    @Override
+    public UserBuilder getSystemManagerUser(String userType) {
+                 return new SystemManagerUserBuilder();
+    }
+
+    public UserBuilder getSystemUser(String userType){
+        switch (userType){
+            case "System": return getSystemAdminUser(userType);
+            case "Manager":  return getSystemManagerUser(userType);
         }
         return null;
     }

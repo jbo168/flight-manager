@@ -49,7 +49,7 @@ public class UserAdminController {
             userFactory = ConcreteFactory.getFactory("system");
         }
 
-        UserBuilder newUser = userFactory.getSystemUser(user.getAccount_type());
+        UserBuilder newUser = userFactory.getSystemAdminUser(user.getAccount_type());
         if(newUser == null){
             newUser = userFactory.getUser();
         }

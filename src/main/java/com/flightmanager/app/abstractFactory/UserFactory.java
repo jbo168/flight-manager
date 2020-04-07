@@ -1,6 +1,8 @@
 package com.flightmanager.app.abstractFactory;
 
 import com.flightmanager.app.builder.CustomerUserBuilder;
+import com.flightmanager.app.builder.SystemAdminUserBuilder;
+import com.flightmanager.app.builder.SystemManagerUserBuilder;
 import com.flightmanager.app.builder.UserBuilder;
 
 /**
@@ -14,7 +16,12 @@ public class UserFactory extends AbstractFactory {
     }
 
     @Override
-    public UserBuilder getSystemUser(String userType) {
-        return null;
+    public UserBuilder getSystemAdminUser(String userType) {
+        return new SystemAdminUserBuilder();
+    }
+
+    @Override
+    public UserBuilder getSystemManagerUser(String userType) {
+        return new SystemManagerUserBuilder();
     }
 }

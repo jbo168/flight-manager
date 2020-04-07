@@ -9,6 +9,7 @@ import com.flightmanager.app.builder.UserBuilder;
 public abstract class AbstractFactory {
 
     public abstract UserBuilder getUser();
-    public abstract UserBuilder getSystemUser(String userType);
+    public abstract UserBuilder getSystemAdminUser(String userType);
+    public abstract UserBuilder getSystemManagerUser(String userType);
 
 }
